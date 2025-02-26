@@ -1,0 +1,46 @@
+import { Outlet } from "react-router-dom";
+import { Container, Box, Button, Typography} from "@mui/material";
+import useStyle from "./Layout.css";
+import Sidebar from "../../components/Sidebar/Sidebar";
+import { Search } from "@mui/icons-material";
+import {LocationOn} from "@mui/icons-material";
+import theme from "../../Theme/theme";
+
+export const Layout = () => {
+  
+    const classes = useStyle();
+
+  return (
+    // creating dashboard Layout 
+   <Container maxWidth='xl' sx={{bgcolor: theme.palette.background.default}}>
+    <Box component='div' className={classes.mainSection}>
+      <Box className={classes.firstCol} sx={{bgcolor: theme.palette.background.paper}}>
+        <Sidebar/>
+      </Box>
+      <Box className={classes.secondCol} sx={{bgcolor: theme.palette.background.paper, padding: '20px'}}>
+        <Box className={classes.locationBox}>
+          <Box className={classes.outerbox}>
+             <Box className={classes.box}>
+               <Search />
+               <input type='text' placeholder='Job Title'/>
+             </Box>
+             <Box className={classes.box}>
+               <LocationOn/>
+               <input type='text' placeholder='Location'/>
+             </Box>
+             <Box>
+               <Button variant="contained" className={classes.findBtn} disableElevation>
+                 <Typography className={classes.btnTxt} variant='body1'>Find Job</Typography>
+                </Button>
+             </Box>
+          </Box>
+          
+        </Box>
+        <Box component='section' sx={{my:5}}> 
+          <Outlet/>            
+        </Box>
+      </Box>
+    </Box>
+   </Container> 
+  );
+};
