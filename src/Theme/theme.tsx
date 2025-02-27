@@ -47,7 +47,8 @@ export const theme = createTheme({
             fontFamily: "'Nunito','serif' !important",
             fontSize: '0.562rem !important',
             color: 'secondary !important',
-        }
+        },
+        
     }   
 })
 

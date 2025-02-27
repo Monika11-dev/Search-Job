@@ -39,10 +39,12 @@ const useStyle = makeStyles<Theme>((theme)=>({
         width: '15px !important',
         fill: `${theme.palette.secondary.light} !important`,
     },
+    navItem: {
+        textDecoration: 'none',
+    },
     navBtn: {
         color: `${theme.palette.secondary.main} !important`,
         gap: '15px',
-        
     '& .MuiListItemIcon-root': {
         minWidth: 0,
         '& svg': {
@@ -50,7 +52,7 @@ const useStyle = makeStyles<Theme>((theme)=>({
             height: '18px',
         }
     },
-    '&:hover': {
+    '&:hover,&.Mui-selected': {
         backgroundColor: `${theme.palette.primary.main} !important`,
         color: 'white !important',
         '& .MuiListItemIcon-root svg': {

@@ -4,12 +4,12 @@ import { Theme } from '@mui/material';
 const useStyle = makeStyles<Theme>(()=>({
     mainSection: {
         display : 'flex',
-        margin: '24px 10px 0px',
-        gap: '15px',
+        // margin: '24px 10px 0px',
+        // gap: '15px',
     },
     firstCol: {
         height: '100vh',
-        width: '300px',
+        width: '280px',
         borderRadius: '4px',
         
     },

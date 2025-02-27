@@ -8,11 +8,12 @@ const useStyle = makeStyles<Theme>((theme)=>({
        color: 'white',
        padding: '15px 20px',
        borderRadius: '10px 10px 0px 0px',
+       boxSizing:'border-box',
     },
     filterContent: {
         backgroundColor: 'white',
-        padding: '20px 16px 30px',
-        
+        padding: '20px 15px 30px',
+        boxSizing:'border-box',
         display: 'flex',
         alignItems: 'center',
         '& .Mui-checked': {

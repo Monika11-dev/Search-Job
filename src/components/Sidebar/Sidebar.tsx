@@ -5,10 +5,27 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import Person2Icon from '@mui/icons-material/Person2';
 import useStyle from './Sidebar.css';
 import EditIcon from '@mui/icons-material/Edit';
+import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
-export const Sidebar = () => {
 
-  const classes = useStyle();
+export const Sidebar : React.FC = () => {
+   const [selectedIndex, setSelectedIndex] = useState(0);
+
+   useEffect(()=>{
+      if(window.location.pathname === '/' ){
+        setSelectedIndex(1);
+      }else if(window.location.pathname === '/Jobs'){
+        setSelectedIndex(2);
+      }
+   },[selectedIndex])
+
+   const handleListItemClick = (e:React.FormEvent, index:number) => {
+        console.log(e);
+        setSelectedIndex(index);
+    };
+    const classes = useStyle();
+
   return (  
     <>
         <Box className={classes.user}>
@@ -21,38 +38,50 @@ export const Sidebar = () => {
         </Box>
         <Box>
             <List disablePadding>
-                <ListItem disablePadding>
-                    <ListItemButton className={classes.navBtn}>
-                        <ListItemIcon >
-                            <DashboardIcon/>
-                        </ListItemIcon>
-                        <ListItemText className={classes.navTxt}>Dashboard</ListItemText>
-                    </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                    <ListItemButton className={classes.navBtn}>
-                        <ListItemIcon>
-                            <WorkIcon/>
-                        </ListItemIcon>
-                        <ListItemText className={classes.navTxt}>Jobs</ListItemText>
-                    </ListItemButton>                         
-                </ListItem>
-                <ListItem disablePadding>
-                    <ListItemButton className={classes.navBtn}>
-                        <ListItemIcon>
-                            <TrendingUpIcon />
-                        </ListItemIcon>
-                        <ListItemText className={classes.navTxt}>Trending Jobs</ListItemText>
-                    </ListItemButton>                         
-                </ListItem>
-                <ListItem disablePadding>
-                    <ListItemButton className={classes.navBtn}>
-                        <ListItemIcon>
-                            <Person2Icon/>
-                        </ListItemIcon>
-                        <ListItemText className={classes.navTxt}>Profile</ListItemText>
-                    </ListItemButton>                         
-                </ListItem>
+                <Link to='/' className={classes.navItem}>
+                    <ListItem disablePadding >
+                        <ListItemButton className={classes.navBtn} selected={selectedIndex === 1} 
+                            onClick={(event) => handleListItemClick(event, 1)}>
+                            <ListItemIcon >
+                                <DashboardIcon/>
+                            </ListItemIcon>
+                            <ListItemText className={classes.navTxt}>Dashboard</ListItemText>
+                        </ListItemButton>
+                    </ListItem>
+                </Link>
+                <Link to='/Jobs' className={classes.navItem}>
+                    <ListItem disablePadding >
+                        <ListItemButton className={classes.navBtn} selected={selectedIndex === 2}
+                            onClick={(event) => handleListItemClick(event, 2)}>
+                            <ListItemIcon >
+                                <WorkIcon/>
+                            </ListItemIcon>
+                            <ListItemText className={classes.navTxt}>Jobs</ListItemText>
+                        </ListItemButton>
+                    </ListItem>
+                </Link>
+                <Link to='/Login' className={classes.navItem}>
+                    <ListItem disablePadding >
+                        <ListItemButton className={classes.navBtn} selected={selectedIndex === 3}
+                            onClick={(event) => handleListItemClick(event, 3)}>
+                            <ListItemIcon >
+                                <TrendingUpIcon/>
+                            </ListItemIcon>
+                            <ListItemText className={classes.navTxt}>Trending Jobs</ListItemText>
+                        </ListItemButton>
+                    </ListItem>
+                </Link>
+                <Link to='/' className={classes.navItem}>
+                    <ListItem disablePadding >
+                        <ListItemButton className={classes.navBtn} selected={selectedIndex === 4}
+                        onClick={(event) => handleListItemClick(event, 3)}>
+                            <ListItemIcon >
+                                <Person2Icon/>
+                            </ListItemIcon>
+                            <ListItemText className={classes.navTxt}>Profile</ListItemText>
+                        </ListItemButton>
+                    </ListItem>
+                </Link>
             </List>
         </Box>
     </>    

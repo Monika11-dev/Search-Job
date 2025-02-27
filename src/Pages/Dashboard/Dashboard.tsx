@@ -17,9 +17,9 @@ const Dashboard = () => {
     setValue(newValue);
   };
   return (
-   <Box component='section' >
-      <Grid container columnSpacing={3} justifyContent="center">
-        <Grid item xs={9} >
+   
+      <Grid container  sx={{justifyContent: 'space-evenly'}} >
+        <Grid item md={8} lg={9}>
            <Box component='div' className={classes.col}>
              <Subheading heading='My Jobs'/>
              <TabContext value={value}>
@@ -48,14 +48,16 @@ const Dashboard = () => {
               </Box> */}
            </Box>
         </Grid>
-        <Grid item xs={3}>
-           <Box component='div' sx={{mx:'15px'}}>
+        
+        <Grid item md={3} lg={2}>
+           <Box component='div'>
             <JobFilter/>
             <JobFilter/>
            </Box>
         </Grid>
+        
       </Grid>
-   </Box>
+   
   )
 }
 

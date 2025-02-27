@@ -12,9 +12,9 @@ export const Layout = () => {
 
   return (
     // creating dashboard Layout 
-   <Container maxWidth='xl' sx={{bgcolor: theme.palette.background.default}}>
+   <Container maxWidth='xl' sx={{padding:'0px !important'}}>
     <Box component='div' className={classes.mainSection}>
-      <Box className={classes.firstCol} sx={{bgcolor: theme.palette.background.paper}}>
+      <Box className={classes.firstCol} sx={{bgcolor: theme.palette.background.default}}>
         <Sidebar/>
       </Box>
       <Box className={classes.secondCol} sx={{bgcolor: theme.palette.background.paper, padding: '20px'}}>
