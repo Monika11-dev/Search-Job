@@ -7,9 +7,9 @@ const AppliedJobs = () => {
   const classes = useStyle();
   return (
     <>
-      <Grid container columnSpacing={1} sx={{my:'10px'}}>
+      <Grid container columnSpacing={{lg:1}} sx={{my:'10px'}}>
          <Grid item xs={1}>
-            <img width='60' height='40' src={img1}/>
+            <img  src={img1} className={classes.companyLogo}/>
          </Grid>
          <Grid item xs={9}>
             <Grid container direction='column' rowSpacing='3px'>

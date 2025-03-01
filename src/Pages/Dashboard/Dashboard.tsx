@@ -1,16 +1,19 @@
 
 import useStyle from './Dashboard.css';
-import { Grid, Box, Tab, Pagination } from '@mui/material';
+import { Grid, Box, Tab, Pagination, useMediaQuery } from '@mui/material';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import Subheading from '../../components/Subheading/Subheading';
 import { useState } from 'react';
 import AppliedJobs from '../../components/AppliedJobs/AppliedJobs';
 import JobFilter from '../../components/JobFilter/JobFilter';
+import theme from '../../Theme/theme';
+import FilterDropdown from '../../components/FilterDropdown/FilterDropdown';
 // import JobCarousel from '../../components/JobCarousel/JobCarousel';
 
 const Dashboard = () => {
 
   const classes = useStyle();
+  const isDesktopValue = useMediaQuery(theme.breakpoints.up(1024));
   const [value, setValue] = useState('1');
   const handleChange = (e:React.FormEvent, newValue:string) => {
     e.preventDefault();
@@ -18,10 +21,15 @@ const Dashboard = () => {
   };
   return (
    
-      <Grid container  sx={{justifyContent: 'space-evenly'}} >
-        <Grid item md={8} lg={9}>
+      <Grid container  sx={{justifyContent: 'space-between'}} >
+        <Grid item sm={12} md={9} className={classes.colOne}>
            <Box component='div' className={classes.col}>
              <Subheading heading='My Jobs'/>
+             {!isDesktopValue && (<Box component='div' className={classes.dropdownBox}>
+                 <FilterDropdown/>
+                 <FilterDropdown/>
+                 <FilterDropdown/>
+              </Box>)}
              <TabContext value={value}>
                 <Box sx={{ borderBottom: 1, borderColor: '#F5F5F5', mt: 2  }}>
                   <TabList className={classes.tabBox} onChange={handleChange} >
@@ -48,13 +56,13 @@ const Dashboard = () => {
               </Box> */}
            </Box>
         </Grid>
-        
-        <Grid item md={3} lg={2}>
+        {isDesktopValue && (<Grid item sm={12} md={3} lg={3} className={classes.colTwo}>
            <Box component='div'>
             <JobFilter/>
             <JobFilter/>
            </Box>
-        </Grid>
+        </Grid>) }
+        
         
       </Grid>
    

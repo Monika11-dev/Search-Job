@@ -9,23 +9,45 @@ const useStyle = makeStyles<Theme>((theme)=>({
        padding: '15px 20px',
        borderRadius: '10px 10px 0px 0px',
        boxSizing:'border-box',
+       [theme.breakpoints.between(1024,1200)]: {
+        padding: '14px 20px',
+        fontSize: '0.82rem !important',
+    }
     },
     filterContent: {
         backgroundColor: 'white',
-        padding: '20px 15px 30px',
-        boxSizing:'border-box',
-        display: 'flex',
+        padding: '20px 15px 30px !important',
+        // boxSizing:'border-box',
+        // display: 'flex',
         alignItems: 'center',
+        '& .MuiListItem-root': {
+            marginBottom: '10px',
+        },
         '& .Mui-checked': {
             color: `${theme.palette.primary.main} !important`,
         },
         '& .MuiRadio-root': {
             padding:0,
-            marginRight: 5,
+            marginRight: 10,
+            [theme.breakpoints.between(1024,1200)]: {
+                marginRight: 5,
+            }
+        },
+        [theme.breakpoints.between(1024,1200)]: {
+            padding: '20px 10px 30px !important',
         }
     },
     filterText: {
-        ...theme.typography.h4,
+        '& .MuiTypography-body1': {
+            ...theme.typography.h4,
+            [theme.breakpoints.between(1024,1200)]: {
+               fontSize: '0.7rem !important',
+            },
+            // [theme.breakpoints.up(1201)]: {
+            //     fontSize: '0.8rem !important',
+            //  }
+        }
+       
     }
 }));
 

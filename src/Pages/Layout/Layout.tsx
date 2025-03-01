@@ -17,7 +17,7 @@ export const Layout = () => {
       <Box className={classes.firstCol} sx={{bgcolor: theme.palette.background.default}}>
         <Sidebar/>
       </Box>
-      <Box className={classes.secondCol} sx={{bgcolor: theme.palette.background.paper, padding: '20px'}}>
+      <Box className={classes.secondCol} sx={{bgcolor: theme.palette.background.paper}}>
         <Box className={classes.locationBox}>
           <Box className={classes.outerbox}>
              <Box className={classes.box}>

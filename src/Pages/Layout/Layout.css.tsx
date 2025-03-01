@@ -1,7 +1,7 @@
 import { makeStyles } from "@mui/styles";
 import { Theme } from '@mui/material';
 
-const useStyle = makeStyles<Theme>(()=>({
+const useStyle = makeStyles<Theme>((theme)=>({
     mainSection: {
         display : 'flex',
         // margin: '24px 10px 0px',
@@ -11,11 +11,19 @@ const useStyle = makeStyles<Theme>(()=>({
         height: '100vh',
         width: '280px',
         borderRadius: '4px',
+        [theme.breakpoints.down(1200)]: {
+            width: '200px',
+        }
         
     },
     secondCol: {
         flex: 1,
         borderRadius: '4px',
+        padding:'20px',
+        [theme.breakpoints.down(1200)]: {
+            padding:'10px',
+        }
+
     },
     locationBox: {
         display: 'flex',
@@ -50,6 +58,9 @@ const useStyle = makeStyles<Theme>(()=>({
             },
             '&:focus-visible':{
                 outline: 'none',
+            },
+            [theme.breakpoints.down(1200)]: {
+                fontSize: '11px',
             }
         }
     },
