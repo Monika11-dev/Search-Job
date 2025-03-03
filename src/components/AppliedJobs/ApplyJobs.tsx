@@ -1,10 +1,8 @@
-import { Grid, Typography,Button } from "@mui/material";
+import { Grid, Typography} from "@mui/material";
 import img1 from '../../assets/Images/Tata-Logo-1988.png';
 import useStyle from "./AppliedJobs.css";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import ApplyButton from "../ApplyButton/ApplyButton";
-
-
+import { Link } from "react-router-dom";
 
 interface Job {
    title: string;
@@ -13,19 +11,25 @@ interface Job {
    employment_type: string;
    created_at: string;
    id:string,
+   description:string,
+   qualifications:string,
+   salary_from : number,
+   number_of_opening: number,
  }
  
  interface Props {
-   jobs: Job[];
+   jobs: Job[],
+   page: number,
+   rowsPerPage: number,
  }
 
 const ApplyJobs = (props:Props) => {
+   
     const classes = useStyle();
-    
+ 
     return (
       <>
-        
-          {props.jobs.map((item) => (
+          {props.jobs.slice(props.page * props.rowsPerPage, (props.page * props.rowsPerPage) + props.rowsPerPage).map((item) => (
              <Grid container columnSpacing={{lg:1}} sx={{my:'15px'}} className={classes.border} key={item.id}>
                <Grid item xs={1}>
                   <img  src={img1} className={classes.companyLogo}/>
@@ -46,11 +50,17 @@ const ApplyJobs = (props:Props) => {
                </Grid>
                <Grid item xs={2} sx={{alignSelf:'center'}}>
                   <Typography className={classes.fulltime}>Full time</Typography> 
-                  <Button disableElevation={false} className={classes.ApplyBtn}><ApplyButton/> </Button>
+                  <Link  className={classes.ApplyBtn} to={ `/JobDescription/${item.id}`} 
+                    state={{ description: `${item.description}`, qualifications: `${item.qualifications}`, 
+                    address : `${item.location}`, 
+                    title: `${item.title}`, 
+                    salary : `${item.salary_from}`, opening: `${item.number_of_opening}`,company: `${item.company}`, 
+                    employment : `${item.employment_type}`, posted: `${item.employment_type}`, id: `${item.id}`}}>
+                     Apply now
+                  </Link>
                </Grid>
             </Grid>
-            ))}
-        
+            ))}   
       </>
     )
 }

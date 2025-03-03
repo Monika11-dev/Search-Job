@@ -1,4 +1,4 @@
-import { Box, Grid,useMediaQuery } from '@mui/material';
+import { Box, Grid,useMediaQuery,Pagination } from '@mui/material';
 import Subheading from '../../components/Subheading/Subheading';
 import theme from '../../Theme/theme';
 import useStyle from './Jobs.css';
@@ -8,14 +8,13 @@ import ApplyJobs from '../../components/AppliedJobs/ApplyJobs';
 import { useState, useEffect } from 'react';
 import CircularProgress from '@mui/joy/CircularProgress';
 
-
 const Jobs = () => {
    const classes = useStyle();
    const isDesktopValue = useMediaQuery(theme.breakpoints.up(1024));
    const [jobs, setJobs] = useState([]);
    const [loading, setLoading] = useState(true);
-   // const [page, setPage] = useState(0);
-   // const [rowsPerPage, setRowsPerPage] = useState(5);
+   const [page, setPage] = useState(1);
+   const rowsPerPage = 5;
   
    useEffect(()=>{     
    async function fetchJobs() {
@@ -28,9 +27,12 @@ const Jobs = () => {
    fetchJobs();
    }, []);
 
-   // const handleChangePage = (event,newPage) => {
-   //     setPage(newPage);
-   // }
+   console.log(jobs);
+
+   const handleChangePage = (event:React.ChangeEvent<unknown>, newPage : number) => {
+      setPage(newPage);
+      console.log(newPage);
+   }
     
   return (
     <Grid container  sx={{justifyContent: 'space-between'}} >
@@ -43,10 +45,15 @@ const Jobs = () => {
                  <FilterDropdown/>
               </Box>)}
               <Box component='div' sx={{my:4}}>
-                 {loading && <CircularProgress size="md" sx={{my:'10px'}}/>}
-                 <ApplyJobs jobs={jobs}/>
                  
-              </Box>       
+                 {loading && <CircularProgress size="md" sx={{my:'10px'}}/>}
+                 <ApplyJobs jobs={jobs} page={page} rowsPerPage={rowsPerPage} />
+                 
+              </Box> 
+              <Box>
+                 {!loading && <Pagination count={10} color="primary" page={page} onChange={handleChangePage} className={classes.pageBox}/>}
+                  
+               </Box>      
            </Box>
         </Grid>
         {isDesktopValue && (<Grid item sm={12} md={3} lg={3} className={classes.colTwo}>
@@ -57,7 +64,7 @@ const Jobs = () => {
         </Grid>) }
         
         
-      </Grid>
+    </Grid>
   )
 }
 

@@ -5,10 +5,23 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import { Search } from "@mui/icons-material";
 import {LocationOn} from "@mui/icons-material";
 import theme from "../../Theme/theme";
+// import { useAppSelector } from "../../Store/Store";
+// import { useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
 
 export const Layout = () => {
   
     const classes = useStyle();
+    // const navigate = useNavigate();
+    // const user : string = useAppSelector(state => state.userAuth.currentUser);
+
+    // useEffect(()=>{
+
+    //   if(user === ' '){
+    //     navigate('/Login');
+    //   }
+
+    // },[]);
 
   return (
     // creating dashboard Layout 

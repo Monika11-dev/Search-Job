@@ -44,6 +44,16 @@ export const useStyle = makeStyles<Theme>((theme)=>({
         justifyContent: 'flex-end',
         
     },
+    pageBox: {
+      margin: '20px 0px',
+      '& .MuiPaginationItem-root.Mui-selected': {
+         backgroundColor: `${theme.palette.primary.main} !important`,
+         color: 'white',
+      },
+      '& .MuiPagination-ul': {
+         justifyContent: 'center',
+      }
+   },
 }));
 
 export default useStyle;

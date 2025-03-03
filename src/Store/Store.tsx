@@ -2,9 +2,10 @@ import { configureStore } from '@reduxjs/toolkit';
 import { userAuthSlice } from './Slice/userAuthSlice';
 import { useSelector } from 'react-redux';
 import { TypedUseSelectorHook } from "react-redux";
+import { appliedJobsSlice } from './Slice/appliedJobsSlice';
 
 export const store = configureStore({
-  reducer: {userAuth : userAuthSlice.reducer},
+  reducer: {userAuth : userAuthSlice.reducer, userJobs : appliedJobsSlice.reducer},
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

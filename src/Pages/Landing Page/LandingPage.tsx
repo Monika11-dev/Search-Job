@@ -2,10 +2,11 @@ import { Box } from "@mui/material";
 import useStyle from "./LandingPage.css";
 import img from '../../assets/Images/Logo_1.png';
 import {Typography, Container, Button} from "@mui/material";
-import { useState } from "react";
+import { useState} from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch} from "react-redux";
 import { userActions } from "../../Store/Slice/userAuthSlice";
+// import { useAppSelector } from "../../Store/Store";
 
 const LandingPage = () => {
 
@@ -36,6 +37,18 @@ const LandingPage = () => {
   const [formValues, setFormValues] = useState(userObject);
   const [isSubmit,setIsSubmit] = useState(false);
 
+  
+  // const user : string = useAppSelector(state => state.userAuth.currentUser);
+
+  // useEffect(()=>{
+
+  //   if(user !== ' '){
+  //     console.log('no user')
+  //     navigate('/');
+  //   }
+
+  // },[]);
+
   const handleChange = (e:inputData) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
@@ -65,7 +78,7 @@ const LandingPage = () => {
         if(currentuser){  
           navigate("/");
           return;
-        } 
+        } console.log("inside function");
           navigate("/Login");
       }
   

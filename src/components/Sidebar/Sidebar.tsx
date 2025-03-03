@@ -1,6 +1,6 @@
 import {Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Avatar, Typography, Stack} from '@mui/material';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import WorkIcon from '@mui/icons-material/Work';
+// import WorkIcon from '@mui/icons-material/Work';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import Person2Icon from '@mui/icons-material/Person2';
 import useStyle from './Sidebar.css';

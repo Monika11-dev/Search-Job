@@ -52,9 +52,7 @@ const useStyle = makeStyles<Theme>((theme)=>({
         }
        
     },
-    radio: {
-
-    }
+    
 }));
 
 export default useStyle;

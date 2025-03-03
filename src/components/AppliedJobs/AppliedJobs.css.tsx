@@ -55,10 +55,22 @@ const useStyle = makeStyles<Theme>((theme)=> ({
         padding: '5px 16px',
         borderRadius: 20,
         fontWeight: 700,
+        marginBottom: '5px !important',
      }, 
      ApplyBtn: {
-        padding: '0px !important',
+        // padding: '0px !important',
         marginTop: '4px !important',
+        backgroundColor: `${theme.palette.primary.main} !important`,
+        color: 'white !important',
+        textTransform: 'capitalize',
+        padding: '5px 10px',
+        borderRadius: '18px',
+        fontSize: '0.7rem !important',
+        textDecoration: 'none',
+        fontFamily: 'Mulish',
+        '&:hover': {
+            backgroundColor: `${theme.palette.primary.dark} !important`,
+          }
      },   
      border: {
         border: `1px solid ${theme.palette.background.paper}`,
