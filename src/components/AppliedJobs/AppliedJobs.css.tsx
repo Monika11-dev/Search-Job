@@ -37,7 +37,7 @@ const useStyle = makeStyles<Theme>((theme)=> ({
         lineHeight: 1.4,
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         gap: 2,
         [theme.breakpoints.between(850,1200)]: {
             fontSize: '0.75rem !important',
@@ -55,7 +55,15 @@ const useStyle = makeStyles<Theme>((theme)=> ({
         padding: '5px 16px',
         borderRadius: 20,
         fontWeight: 700,
-     },    
+     }, 
+     ApplyBtn: {
+        padding: '0px !important',
+        marginTop: '4px !important',
+     },   
+     border: {
+        border: `1px solid ${theme.palette.background.paper}`,
+        padding: '10px 5px',
+     }
     }
 ));
 

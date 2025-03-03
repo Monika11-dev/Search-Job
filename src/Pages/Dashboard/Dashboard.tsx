@@ -39,11 +39,12 @@ const Dashboard = () => {
                   </TabList>
                 </Box>
                 <TabPanel value="1" className={classes.tabpanel}>
-                   <AppliedJobs/>
-                   <AppliedJobs/>
-                   <AppliedJobs/>
-                   <AppliedJobs/>
-                   <AppliedJobs/>
+                   <AppliedJobs />
+                   <AppliedJobs />
+                   <AppliedJobs />
+                   <AppliedJobs />
+                   <AppliedJobs />
+                   
                    
                    <Pagination count={10} className={classes.pageBox}/>
                 </TabPanel>

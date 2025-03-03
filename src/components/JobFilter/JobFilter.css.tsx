@@ -33,6 +33,9 @@ const useStyle = makeStyles<Theme>((theme)=>({
                 marginRight: 5,
             }
         },
+        '& .MuiListItem-root .MuiRadio-root .css-hyxlzm .MuiSvgIcon-root': {
+            fontSize: '1rem',
+        },
         [theme.breakpoints.between(1024,1200)]: {
             padding: '20px 10px 30px !important',
         }
@@ -48,6 +51,9 @@ const useStyle = makeStyles<Theme>((theme)=>({
             //  }
         }
        
+    },
+    radio: {
+
     }
 }));
 

@@ -106,6 +106,12 @@ const useStyle =  makeStyles<Theme>((theme) => ({
     },
     signinText: {
         textTransform: 'capitalize',
+    },
+    Signup: {
+        fontFamily: 'Mulish !important',
+        fontSize: '17px !important',
+        color:'white',
+        textTransform: 'capitalize',
     }
 
 }));

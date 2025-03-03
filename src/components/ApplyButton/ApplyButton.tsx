@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { Theme } from "@mui/material";
 
@@ -7,8 +7,13 @@ const useStyle = makeStyles<Theme>((theme)=>({
   Applybtn: {
     backgroundColor: `${theme.palette.primary.main} !important`,
     color: 'white !important',
-    // textTransform: 'capitalize !important',
-    
+    textTransform: 'capitalize',
+    padding: '5px 10px',
+    borderRadius: '18px',
+    fontSize: '0.7rem !important',
+    '&:hover': {
+      backgroundColor: `${theme.palette.primary.dark} !important`,
+    }
   }
 
 }));
@@ -16,7 +21,7 @@ const useStyle = makeStyles<Theme>((theme)=>({
 const ApplyButton = () => {
   const classes = useStyle();
   return (
-    <Button className={classes.Applybtn}>Apply</Button>
+    <Typography className={classes.Applybtn}>Apply now</Typography>
   )
 }
 

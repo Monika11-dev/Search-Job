@@ -68,6 +68,9 @@ const useStyle = makeStyles<Theme>((theme)=>({
         borderRadius: '25px !important',
         padding: '6px 16px !important',  
         backgroundColor: '#4884ED !important',   
+        '&:hover': {
+            backgroundColor: `${theme.palette.primary.dark} !important`,
+        }
     },
     btnTxt: {
         textTransform: 'capitalize',

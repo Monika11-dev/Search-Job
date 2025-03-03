@@ -11,7 +11,7 @@ const JobFilter = () => {
               <ListItem disablePadding>
                 
                   
-                  <Radio checked={true} size="small" color='primary'/>
+                  <Radio checked={true} size="small" color='primary' className={classes.radio}/>
                   
                   <ListItemText primary="Technical Associate" className={classes.filterText}/>
                 

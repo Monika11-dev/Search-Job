@@ -3,10 +3,7 @@ import { Theme } from '@mui/material';
 
 const useStyle = makeStyles<Theme>((theme)=>({
    colOne: {
-      // [theme.breakpoints.between(1024,1200)]: {
-      //    flexBasis: '78% !important',
-      //    maxWidth: '78% !important',
-      // },
+
       [theme.breakpoints.down(1024)]: {
          flexBasis: '100% !important',
          maxWidth: '100% !important',
@@ -22,10 +19,7 @@ const useStyle = makeStyles<Theme>((theme)=>({
       
    },
    colTwo: {
-      // [theme.breakpoints.between(1024,1200)]: {
-      //    flexBasis: '20% !important',
-      //    maxWidth: '20% !important',
-      // },
+     
       [theme.breakpoints.down(1024)]: {
          flexBasis: '100% !important',
          maxWidth: '100% !important',

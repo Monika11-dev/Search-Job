@@ -3,6 +3,7 @@ import img1 from '../../assets/Images/Tata-Logo-1988.png';
 import useStyle from "./AppliedJobs.css";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
+
 const AppliedJobs = () => {
   const classes = useStyle();
   return (
@@ -25,7 +26,7 @@ const AppliedJobs = () => {
              </Grid>
             </Grid>
          </Grid>
-         <Grid item xs={2}>
+         <Grid item xs={2} >
             <Typography className={classes.fulltime}>Full time</Typography>  
          </Grid>
       </Grid>

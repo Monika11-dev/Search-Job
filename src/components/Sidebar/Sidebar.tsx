@@ -7,31 +7,43 @@ import useStyle from './Sidebar.css';
 import EditIcon from '@mui/icons-material/Edit';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-
+import { useAppSelector } from '../../Store/Store';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { useDispatch} from "react-redux";
+import { userActions } from '../../Store/Slice/userAuthSlice';
+import { useNavigate } from 'react-router-dom';
 
 export const Sidebar : React.FC = () => {
-   const [selectedIndex, setSelectedIndex] = useState(0);
 
-   useEffect(()=>{
-      if(window.location.pathname === '/' ){
-        setSelectedIndex(1);
-      }else if(window.location.pathname === '/Jobs'){
-        setSelectedIndex(2);
-      }
-   },[selectedIndex])
+    const [selectedIndex, setSelectedIndex] = useState(0);
+    const user : string = useAppSelector(state => state.userAuth.currentUser);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const classes = useStyle();
+    
+    useEffect(()=>{
+        if(window.location.pathname === '/' ){
+            setSelectedIndex(1);
+        }else if(window.location.pathname === '/Jobs'){
+            setSelectedIndex(2);
+        }
+    },[selectedIndex])
 
-   const handleListItemClick = (e:React.FormEvent, index:number) => {
+    const handleListItemClick = (e:React.FormEvent, index:number) => {
         console.log(e);
         setSelectedIndex(index);
     };
-    const classes = useStyle();
+    const handleLogout = () => {
+        dispatch(userActions.logoutUser());
+        navigate('/Login');
+      };
 
   return (  
     <>
         <Box className={classes.user}>
             <Avatar className={classes.avatar}><Person2Icon/></Avatar>
             <Stack className={classes.userdetails}>
-                <Typography variant='body1' className={classes.userName}>Monika chauhan</Typography>
+                <Typography variant='body1' className={classes.userName}>{user}</Typography>
                 <Typography variant='body2' className={classes.userDesignation}>Javascript Developer</Typography>
             </Stack>
             <EditIcon className={classes.editIcon}/>
@@ -54,17 +66,6 @@ export const Sidebar : React.FC = () => {
                         <ListItemButton className={classes.navBtn} selected={selectedIndex === 2}
                             onClick={(event) => handleListItemClick(event, 2)}>
                             <ListItemIcon >
-                                <WorkIcon/>
-                            </ListItemIcon>
-                            <ListItemText className={classes.navTxt}>Jobs</ListItemText>
-                        </ListItemButton>
-                    </ListItem>
-                </Link>
-                <Link to='/Login' className={classes.navItem}>
-                    <ListItem disablePadding >
-                        <ListItemButton className={classes.navBtn} selected={selectedIndex === 3}
-                            onClick={(event) => handleListItemClick(event, 3)}>
-                            <ListItemIcon >
                                 <TrendingUpIcon/>
                             </ListItemIcon>
                             <ListItemText className={classes.navTxt}>Trending Jobs</ListItemText>
@@ -73,7 +74,7 @@ export const Sidebar : React.FC = () => {
                 </Link>
                 <Link to='/' className={classes.navItem}>
                     <ListItem disablePadding >
-                        <ListItemButton className={classes.navBtn} selected={selectedIndex === 4}
+                        <ListItemButton className={classes.navBtn} selected={selectedIndex === 3}
                         onClick={(event) => handleListItemClick(event, 3)}>
                             <ListItemIcon >
                                 <Person2Icon/>
@@ -82,6 +83,17 @@ export const Sidebar : React.FC = () => {
                         </ListItemButton>
                     </ListItem>
                 </Link>
+                {/* <Link to='/Login' className={classes.navItem}> */}
+                    <ListItem disablePadding className={classes.navItem}>
+                        <ListItemButton className={classes.navBtn} selected={selectedIndex === 4}
+                        onClick={handleLogout}>
+                            <ListItemIcon >
+                                <LogoutIcon/>
+                            </ListItemIcon>
+                            <ListItemText className={classes.navTxt}>Logout</ListItemText>
+                        </ListItemButton>
+                    </ListItem>
+                {/* </Link> */}
             </List>
         </Box>
     </>    
