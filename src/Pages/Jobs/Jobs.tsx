@@ -7,6 +7,7 @@ import JobFilter from '../../components/JobFilter/JobFilter';
 import ApplyJobs from '../../components/AppliedJobs/ApplyJobs';
 import { useState, useEffect } from 'react';
 import CircularProgress from '@mui/joy/CircularProgress';
+import { Data } from '../../Database/Data';
 
 const Jobs = () => {
    const classes = useStyle();
@@ -15,17 +16,12 @@ const Jobs = () => {
    const [loading, setLoading] = useState(true);
    const [page, setPage] = useState(1);
    const rowsPerPage = 5;
-  
-   useEffect(()=>{     
-   async function fetchJobs() {
+   
+   useEffect(()=>{
       setLoading(true);
-      await fetch('https://jsonfakery.com/jobs')
-      .then((res)=>res.json())
-      .then((data)=>{setJobs(data);setLoading(false)})
-      .then((err)=>console.log(err)).finally(()=>console.log('submitted'));
-   }
-   fetchJobs();
-   }, []);
+      Data().then((data)=>{setJobs(data);setLoading(false)})
+      .catch((err)=>console.log(err)).finally(()=>console.log('submitted'));
+   },[]);
 
    console.log(jobs);
 
