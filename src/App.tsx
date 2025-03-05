@@ -7,7 +7,7 @@ import Dashboard from './Pages/Dashboard/Dashboard';
 import LandingPage from './Pages/Landing Page/LandingPage';
 import JobDescription from './Pages/JobDescription/JobDescription';
 import Jobs from './Pages/Jobs/Jobs';
-
+import Profile from './Pages/Profile/Profile';
 
 function App() { 
 
@@ -20,6 +20,7 @@ function App() {
             <Route index element={<Dashboard />}/>
             <Route path='/Jobs' element={<Jobs/>}/>
             <Route path='/JobDescription/:id'  element={<JobDescription/>}/>
+            <Route path='/Profile' element={<Profile/>}/>
           </Route>    
           <Route path='/Login' element={<LandingPage />}/>
         </Routes>         

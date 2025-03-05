@@ -26,6 +26,8 @@ export const Sidebar : React.FC = () => {
             setSelectedIndex(1);
         }else if(window.location.pathname === '/Jobs'){
             setSelectedIndex(2);
+        }else if(window.location.pathname === '/Profile'){
+            setSelectedIndex(3);
         }
     },[selectedIndex])
 
@@ -72,7 +74,7 @@ export const Sidebar : React.FC = () => {
                         </ListItemButton>
                     </ListItem>
                 </Link>
-                <Link to='/' className={classes.navItem}>
+                <Link to='/Profile' className={classes.navItem}>
                     <ListItem disablePadding >
                         <ListItemButton className={classes.navBtn} selected={selectedIndex === 3}
                         onClick={(event) => handleListItemClick(event, 3)}>

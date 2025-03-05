@@ -52,6 +52,11 @@ const useStyle = makeStyles<Theme>((theme)=>({
         }
        
     },
+    checkbox: {
+        '& svg': {
+            fontSize: '1.2rem' ,
+        }
+    }
     
 }));
 

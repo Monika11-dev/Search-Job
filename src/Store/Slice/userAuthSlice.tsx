@@ -7,14 +7,43 @@ interface stringObject {
   password ?: string,
 }
 
+interface Profile {
+  firstname: string,
+  lastname: string,
+  title: string,
+  languages: string,
+  current: string,
+  expected: string,
+  message: string,
+  mobile: string,
+  email: string,
+  country: string,
+  state: string,
+  pincode:string,
+  street:string,
+  degree:string,
+  university:string,
+  grade:string,
+  year:string,
+  designation:string,
+  employment:string,
+  company:string,
+  location:string,
+  skill1:string,
+  skill2: string, 
+}
+
+
 interface ExistingUserState {
-  existingUser: stringObject[];  
+  existingUser: stringObject[]; 
+  existingProfile: Profile[];
   currentUser: string;
   currentEmail: string;
 }
 
 const initialState: ExistingUserState = {
   existingUser: JSON.parse(localStorage.getItem("SearchJobuser") as string) || [],
+  existingProfile: JSON.parse(localStorage.getItem("SearchJobProfile") as string) || [],
   currentUser: JSON.parse(localStorage.getItem("currentSearchJobUser") as string) || '',
   currentEmail: JSON.parse(localStorage.getItem("currentSearchJobEmail") as string) || '',
 }
@@ -74,6 +103,20 @@ export const userAuthSlice = createSlice({
       state.currentUser = '';
       state.currentEmail = '';
       alert("You have been logged out.");
+  },
+  updateProfile(state,action){
+    const userProfile = action.payload;  
+    if(state.currentEmail === userProfile.email){
+      const updatedProfile = state.existingProfile.map((item:Profile) =>
+        item.email === userProfile.email
+          ? { ...item, name: userProfile.name , email : userProfile.email, mobile :userProfile.mobile,location : userProfile.location }
+          : item
+      );
+      localStorage.setItem("SearchJobProfile", JSON.stringify(updatedProfile));
+        return;
+    }
+    state.existingProfile.push(userProfile);
+    localStorage.setItem("SearchJobProfile", JSON.stringify(state.existingProfile));
   }
     
   },

@@ -1,6 +1,6 @@
 
-export const Data = async () => {     
-   const response =  await fetch('https://jsonfakery.com/jobs');
+export const Data = async (url:string) => {     
+   const response =  await fetch(url);
    return await response.json();
 }
 

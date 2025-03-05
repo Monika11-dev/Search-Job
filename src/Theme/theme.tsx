@@ -19,6 +19,7 @@ export const theme = createTheme({
         },
         grey: {
             100: '#333333',
+            200: '#E0E0E0',
         }
         
     },

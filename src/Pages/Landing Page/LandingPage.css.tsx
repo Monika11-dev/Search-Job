@@ -6,16 +6,11 @@ const useStyle =  makeStyles<Theme>((theme) => ({
     
     background: {
         backgroundImage: `url(${img})`,
-        // height: '100vh',
         backgroundSize: 'cover',
         
     },
     nav: {
         display: 'flex',
-        // position: 'fixed',
-        // top: '20px',
-        // left: '84px',
-        // right: '84px',
         padding: '20px 0px 0px',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -23,7 +18,7 @@ const useStyle =  makeStyles<Theme>((theme) => ({
     hero: {
         height: '100vh',
         position: 'relative',
-        // alignItems: 'center',
+
     },
     heroContent: {
         position: 'absolute',

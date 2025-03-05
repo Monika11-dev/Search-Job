@@ -23,7 +23,7 @@ const JobDescription = () => {
 
     const handleApply = () => {
          dispatch(jobsActions.applyJobs({title,address,id,company,employment})); 
-         navigate('/Jobs');
+         navigate('/');
     } 
   return (
     <Grid container sx={{justifyContent: 'space-between'}} >

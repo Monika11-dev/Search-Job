@@ -2,34 +2,76 @@ import { FormControl,InputLabel, Select, MenuItem,SelectChangeEvent} from "@mui/
 import useStyle from "./FilterDropdown.css";
 // import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { useState } from "react";
+import { useAppSelector } from '../../Store/Store';
 
-const FilterDropdown = () => {
+interface Props{
+  onFilterChange: (filters: {
+    location: string[];
+    category: string[];
+  }) => void;
+}
+
+const FilterDropdown = (props:Props) => {
     const classes = useStyle();
-    const [value, setvalue] = useState('');
-
-    const handleChange = (event:SelectChangeEvent) => {
-      setvalue(event.target.value);
+    const [catValue, setCatValue] = useState('');
+    const [locValue, setLocValue] = useState('');
+    const category : string[] = useAppSelector(state => state.jobsFilter.cats);
+    const location : string[] = useAppSelector(state => state.jobsFilter.loc);
+    const handleCatChange = (event:SelectChangeEvent) => {
+      setCatValue(event.target.value);
+      const newCategories = event.target.value
+      
+      props.onFilterChange({ location: [locValue], category: [newCategories] });
+      
     };
+    const handleLocChange = (event:SelectChangeEvent) => {
+      setLocValue(event.target.value);
+      const newLocations = event.target.value
+      props.onFilterChange({ location: [newLocations], category: [catValue] });
+    };
+    console.log(catValue,locValue);
   return (
-    
+      <>
         <FormControl variant="standard" sx={{ m: 1, minWidth: 150}} className={classes.inputBackground}>
             <InputLabel id="demo-simple-select-standard-label">Jobs by Category</InputLabel>
             <Select
             labelId="demo-simple-select-standard-label"
             id="demo-simple-select-standard"
-            value={value}
-            onChange={handleChange}
+            value={catValue}
+            onChange={handleCatChange}
             label="value"
             className={classes.Select}>
-            <MenuItem value="" >
-                <em>None</em>
+            <MenuItem value="None" >
+                <em>Select</em>
             </MenuItem>
-            <MenuItem value={10}>Technical Associate</MenuItem>
-            <MenuItem value={20}>Web Developer</MenuItem>
-            <MenuItem value={30}>App Developer</MenuItem>
+            {category.map((item) => (
+                  <MenuItem key={item} value={item}>
+                    {item}
+                  </MenuItem>
+                ))}
             </Select>
-      </FormControl>       
-    
+        </FormControl>  
+        <FormControl variant="standard" sx={{ m: 1, minWidth: 150}} className={classes.inputBackground}>
+            <InputLabel id="demo-simple-select-standard-label">Jobs by Location</InputLabel>
+            <Select
+            labelId="demo-simple-select-standard-label"
+            id="demo-simple-select-standard"
+            value={locValue}
+            onChange={handleLocChange}
+            label="value"
+            className={classes.Select}>
+            <MenuItem value="None" >
+                <em>Select</em>
+            </MenuItem>
+            {location.map((item) => (
+                  <MenuItem key={item} value={item}>
+                    {item}
+                  </MenuItem>
+                ))}
+            </Select>
+        </FormControl>  
+              
+    </>
   )
 }
 

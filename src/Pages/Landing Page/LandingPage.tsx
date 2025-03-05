@@ -2,10 +2,12 @@ import { Box } from "@mui/material";
 import useStyle from "./LandingPage.css";
 import img from '../../assets/Images/Logo_1.png';
 import {Typography, Container, Button} from "@mui/material";
-import { useState} from "react";
+import { useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch} from "react-redux";
 import { userActions } from "../../Store/Slice/userAuthSlice";
+import { filterActions } from "../../Store/Slice/FiltersSlice";
+import Data from "../../Database/Data";
 // import { useAppSelector } from "../../Store/Store";
 
 const LandingPage = () => {
@@ -23,6 +25,20 @@ const LandingPage = () => {
     password:string,
   }
 
+  interface Job {
+    title: string;
+    location:string;
+    company:string;
+    employment_type: string;
+    created_at: string;
+    id:string,
+    description:string,
+    qualifications:string,
+    salary_from : number,
+    salary_to: number,
+    number_of_opening: number,
+  }
+
   const userObject = {     
     username : '',
     email : '',
@@ -30,24 +46,39 @@ const LandingPage = () => {
   };
  
   const classes = useStyle();
+  const url = 'https://jsonfakery.com/jobs'; 
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isSignup, setSignup] = useState(false);
   const [validateErrors, setValidateErrors] = useState(userObject);
   const [formValues, setFormValues] = useState(userObject);
   const [isSubmit,setIsSubmit] = useState(false);
-
   
-  // const user : string = useAppSelector(state => state.userAuth.currentUser);
+     useEffect(()=>{     
+        Data(url).then((data)=>{   
+             Filter(data);
+           })
+        .catch((err)=>console.log(err)).finally(()=>console.log('submitted'));
+     },[]);
+  
+     const Filter = (data:Job[]) => {
 
-  // useEffect(()=>{
+          const allCat = data.map((item: Job) => {
+             return item.employment_type;
+          })
+          const allLoc = data.map((item: Job) => {
+             return item.location;
+          })
+          const myCat = [...new Set(allCat)];
+          const myLoc = [...new Set(allLoc)];
+          const catData = slicer(myCat);
+          const locData = slicer(myLoc);
+          dispatch(filterActions.setFilter({catData,locData}));   
+              
+     }
 
-  //   if(user !== ' '){
-  //     console.log('no user')
-  //     navigate('/');
-  //   }
-
-  // },[]);
+     const slicer = (data:string[]) => data.slice(0,6);
+     
 
   const handleChange = (e:inputData) => {
     const { name, value } = e.target;

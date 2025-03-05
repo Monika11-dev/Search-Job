@@ -28,58 +28,7 @@ const useStyle = makeStyles<Theme>((theme)=>({
         }
 
     },
-    locationBox: {
-        display: 'flex',
-        justifyContent: 'flex-end',
-       
-    },
-    outerbox:{
-        display: 'flex',
-        alignItems: 'center',
-        backgroundColor: 'white',
-        borderRadius: 60,
-        padding: '4px 4px 4px 20px',
-    },
-    box: {
-        display: 'flex',
-        alignItems: 'center',
-        gap: 10, 
-        '& svg': {
-            height: 15,
-            width: 15,
-            color: '#4884ED',
-            // strokeWidth:1,
-            // stroke: '#1976d2',
-        },
-        '& input': {
-            border: 'none',
-            fontFamily: 'Mulish',
-            fontSize: 13,
-            fontWeight: 500,
-            '&::placeholder': {
-              color: '#4884ED',  
-            },
-            '&:focus-visible':{
-                outline: 'none',
-            },
-            [theme.breakpoints.down(1200)]: {
-                fontSize: '11px',
-            }
-        }
-    },
-    findBtn: {     
-        borderRadius: '25px !important',
-        padding: '6px 16px !important',  
-        backgroundColor: '#4884ED !important',   
-        '&:hover': {
-            backgroundColor: `${theme.palette.primary.dark} !important`,
-        }
-    },
-    btnTxt: {
-        textTransform: 'capitalize',
-        fontFamily: 'Mulish !important',
-        fontSize: '12px !important',
-    }
+    
     
 }));
 

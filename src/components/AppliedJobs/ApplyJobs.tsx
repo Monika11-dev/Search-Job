@@ -18,6 +18,7 @@ interface Job {
  }
  
  interface Props {
+   
    jobs: Job[],
    page: number,
    rowsPerPage: number,
@@ -29,7 +30,7 @@ const ApplyJobs = (props:Props) => {
  
     return (
       <>
-          {props.jobs.slice(props.page * props.rowsPerPage, (props.page * props.rowsPerPage) + props.rowsPerPage).map((item) => (
+          {props.jobs.slice((props.page-1) * props.rowsPerPage, ((props.page-1) * props.rowsPerPage) + props.rowsPerPage).map((item) => (
              <Grid container columnSpacing={{lg:1}} sx={{my:'15px'}} className={classes.border} key={item.id}>
                <Grid item xs={1}>
                   <img  src={img1} className={classes.companyLogo}/>
@@ -41,9 +42,7 @@ const ApplyJobs = (props:Props) => {
                      <Grid container>
                            <Grid item xs={4}><Typography className={classes.company}>{item.company}</Typography></Grid>
                            <Grid item xs={4}><Typography className={classes.jobDetails}><LocationOnIcon sx={{height: 15, width: 15, color: '#7A7A7A'}}/>{item.location}</Typography></Grid>
-                           {/* <Grid item xs={2}><Typography className={classes.jobDetails}>{item.created_at}</Typography></Grid> */}
                            <Grid item xs={3}><Typography className={classes.jobDetails}>{item.employment_type}</Typography></Grid>
-                           {/* <Grid item xs={2}><Typography className={classes.jobDetails}>view details</Typography></Grid> */}
                      </Grid>
                   </Grid>
                   </Grid>
