@@ -15,13 +15,10 @@ export const Layout = () => {
    <Container maxWidth='xl' sx={{padding:'0px !important'}}>
     <Box component='div' className={classes.mainSection}>
       <Box className={classes.firstCol} sx={{bgcolor: theme.palette.background.default}}>
-        <Sidebar/>
+          <Sidebar/>
       </Box>
-      <Box className={classes.secondCol} sx={{bgcolor: theme.palette.background.paper}}>
-        
-        <Box component='section' sx={{my:5}}> 
-          <Outlet />            
-        </Box>
+      <Box className={classes.secondCol} sx={{bgcolor: theme.palette.background.paper}}>    
+          <Outlet />                
       </Box>
     </Box>
    </Container> 

@@ -1,6 +1,6 @@
 import {Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Avatar, Typography, Stack,IconButton} from '@mui/material';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-// import WorkIcon from '@mui/icons-material/Work';
+import img from '../../assets/Images/Logo_1.png';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import Person2Icon from '@mui/icons-material/Person2';
 import useStyle from './Sidebar.css';
@@ -41,14 +41,18 @@ export const Sidebar : React.FC = () => {
       };
 
   return (  
-    <>
+    <>  <Box component='a' className={classes.logo}>
+            <img src={img} className={classes.logoImg}/>
+            <Typography className={classes.search} component='span'>SEARCH</Typography>
+            <Typography className={classes.job} component='span'>JOB</Typography>
+        </Box>
         <Box className={classes.user}>
             <Avatar className={classes.avatar}><Person2Icon/></Avatar>
             <Stack className={classes.userdetails}>
                 <Typography variant='body1' className={classes.userName}>{user}</Typography>
                 <Typography variant='body2' className={classes.userDesignation}>Javascript Developer</Typography>
             </Stack>
-            <IconButton LinkComponent={Link} to='/Profile' className={classes.editIconBtn}>
+            <IconButton component='a' href='/Profile' className={classes.editIconBtn}>
               <EditIcon className={classes.editIcon} />
             </IconButton>
             

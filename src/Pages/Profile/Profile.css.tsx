@@ -7,8 +7,6 @@ export const useStyle = makeStyles<Theme>((theme)=>({
         borderRadius: 4,
         margin: '10px 20px',
         padding: '20px 40px',
-        maxWidth: '850px',
-        
     },
     textField: {
         '& .MuiInputBase-root': {

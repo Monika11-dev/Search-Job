@@ -53,11 +53,10 @@ const Jobs = () => {
        }
       Data(url).then((data)=>{   
          setJobs(data);
-         // Filter(data);
          setLoading(false)})
       .catch((err)=>console.log(err)).finally(()=>console.log('submitted'));
    },[navigate,currentUser]);
-   console.log(filters);
+   // console.log(filters);
 
    // const Filter = (data:Job[]) => {
    //      const allCat = data.map((item: Job) => {

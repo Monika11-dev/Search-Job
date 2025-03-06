@@ -6,7 +6,7 @@ const useStyle =  makeStyles<Theme>((theme) => ({
     
     background: {
         backgroundImage: `url(${img})`,
-        backgroundSize: 'cover',
+        backgroundSize: '100% 100%',
         
     },
     nav: {
@@ -55,7 +55,8 @@ const useStyle =  makeStyles<Theme>((theme) => ({
         color: 'white',
         fontWeight: 'lighter !important',
         marginRight: '40px !important',
-        textDecoration: 'none'
+        textDecoration: 'none',
+        textTransform: 'capitalize',
     },
     signup: {
         ...theme.typography.h4,

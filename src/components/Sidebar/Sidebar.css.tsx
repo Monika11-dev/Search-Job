@@ -91,7 +91,31 @@ const useStyle = makeStyles<Theme>((theme)=>({
                fontSize: '0.8rem',
             }
         }
-    }
+    },
+    logo: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: '10px',
+    },
+    logoImg: {
+        width: 50,
+        height: 40,
+    },
+    search: {
+        fontFamily: 'nunito !important',
+        fontSize: '20px !important',
+        fontWeight: '600 !important',
+        letterSpacing: '4px !important',
+    },
+    job: {
+        fontFamily: 'nunito !important',
+        fontSize: '20px !important',
+        fontWeight: '700 !important',
+        letterSpacing: '4px !important',
+        color: theme.palette.primary.dark,
+        marginLeft: 1,
+    },
 }));
 
 export default useStyle;

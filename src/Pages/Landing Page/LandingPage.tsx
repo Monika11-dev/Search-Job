@@ -128,7 +128,6 @@ const LandingPage = () => {
    const validate = (values:stringObject) => {
     
     const errors: stringObject = { username : '',email: '', password: ''};
-
     const regexUsername = /^[A-Za-z\s]+$/;
     const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const regexPassword = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&+=!]).{8,}$/;
@@ -177,8 +176,13 @@ const LandingPage = () => {
                   <Typography className={classes.job} component='span'>JOB</Typography>
               </Box>
               <Box component='div'>
-                  <Typography component='a' href='/Login' className={classes.login}>Log In</Typography>
-                  <Typography component='a' href='/Signup' className={classes.signup}>Sign up</Typography>
+                <Button onClick={()=>setSignup(!isSignup)}>
+                {isSignup ? (<Typography className={classes.login}>Log In</Typography>) : (
+                  <Typography  className={classes.signup}>Sign up</Typography>
+                )}
+                </Button>
+                  
+                  
               </Box>
             </Box>
 

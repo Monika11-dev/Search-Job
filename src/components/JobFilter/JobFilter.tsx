@@ -32,23 +32,6 @@ const JobFilter = (props:Props) => {
   };
 
   console.log(selectedLocation);
-  // const [selectedSalary, setSelectedSalary] = useState<string[]>([]);
-  
-  // const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
-
-  // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   const { name, checked } = event.target;
-  //   setCheckedItems((prevState) => ({
-  //     ...prevState,
-  //     [name]: checked, 
-  //   }));
-  //   props.filter(checkedItems);
-    
-  // };
-
-  // useEffect(()=>{
-  //   props.filter(checkedItems);
-  // },[checkedItems,props]);
 
   const classes = useStyle();
 
@@ -69,7 +52,7 @@ const JobFilter = (props:Props) => {
                         />
                         
                     </FormGroup>
-                    {/* <ListItemText primary={item} className={classes.filterText}/> */}
+                    
                   </ListItem>
                 ))}             
               
@@ -90,7 +73,7 @@ const JobFilter = (props:Props) => {
                         />
                         
                     </FormGroup>
-                    {/* <ListItemText primary={item} className={classes.filterText}/> */}
+                    
                   </ListItem>
                 ))}             
               

@@ -4,8 +4,6 @@ import { Theme } from '@mui/material';
 const useStyle = makeStyles<Theme>((theme)=>({
     mainSection: {
         display : 'flex',
-        // margin: '24px 10px 0px',
-        // gap: '15px',
     },
     firstCol: {
         height: '100vh',
