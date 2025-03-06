@@ -1,6 +1,5 @@
 import { FormControl,InputLabel, Select, MenuItem,SelectChangeEvent} from "@mui/material";
 import useStyle from "./FilterDropdown.css";
-// import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { useState } from "react";
 import { useAppSelector } from '../../Store/Store';
 
@@ -19,8 +18,7 @@ const FilterDropdown = (props:Props) => {
     const location : string[] = useAppSelector(state => state.jobsFilter.loc);
     const handleCatChange = (event:SelectChangeEvent) => {
       setCatValue(event.target.value);
-      const newCategories = event.target.value
-      
+      const newCategories = event.target.value 
       props.onFilterChange({ location: [locValue], category: [newCategories] });
       
     };
@@ -33,10 +31,8 @@ const FilterDropdown = (props:Props) => {
   return (
       <>
         <FormControl variant="standard" sx={{ m: 1, minWidth: 150}} className={classes.inputBackground}>
-            <InputLabel id="demo-simple-select-standard-label">Jobs by Category</InputLabel>
+            <InputLabel >Jobs by Category</InputLabel>
             <Select
-            labelId="demo-simple-select-standard-label"
-            id="demo-simple-select-standard"
             value={catValue}
             onChange={handleCatChange}
             label="value"
@@ -52,10 +48,8 @@ const FilterDropdown = (props:Props) => {
             </Select>
         </FormControl>  
         <FormControl variant="standard" sx={{ m: 1, minWidth: 150}} className={classes.inputBackground}>
-            <InputLabel id="demo-simple-select-standard-label">Jobs by Location</InputLabel>
-            <Select
-            labelId="demo-simple-select-standard-label"
-            id="demo-simple-select-standard"
+            <InputLabel >Jobs by Location</InputLabel>
+            <Select  
             value={locValue}
             onChange={handleLocChange}
             label="value"

@@ -1,47 +1,58 @@
-import {Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Avatar, Typography, Stack,IconButton} from '@mui/material';
+import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Avatar, Typography, Stack, Dialog,
+         DialogActions, Button } from '@mui/material';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import img from '../../assets/Images/Logo_1.png';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import Person2Icon from '@mui/icons-material/Person2';
-import useStyle from './Sidebar.css';
 import EditIcon from '@mui/icons-material/Edit';
-import { Link } from 'react-router-dom';
+import LogoutIcon from '@mui/icons-material/Logout';
+import useStyle from './Sidebar.css';
 import { useState, useEffect } from 'react';
 import { useAppSelector } from '../../Store/Store';
-import LogoutIcon from '@mui/icons-material/Logout';
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
+import { useNavigate, Link  } from 'react-router-dom';
 import { userActions } from '../../Store/Slice/userAuthSlice';
-import { useNavigate } from 'react-router-dom';
 
 export const Sidebar : React.FC = () => {
 
     const [selectedIndex, setSelectedIndex] = useState(0);
+    const [logout, setLogout] = useState(false);
     const user : string = useAppSelector(state => state.userAuth.currentUser);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const classes = useStyle();
-    
+
     useEffect(()=>{
+        
         if(window.location.pathname === '/' ){
             setSelectedIndex(1);
         }else if(window.location.pathname === '/Jobs'){
             setSelectedIndex(2);
         }else if(window.location.pathname === '/Profile'){
             setSelectedIndex(3);
+        }else if(window.location.pathname === '/JobDescription/:id'){
+            setSelectedIndex(2);
         }
-    },[selectedIndex])
+    },[selectedIndex,navigate])
 
     const handleListItemClick = (e:React.FormEvent, index:number) => {
         console.log(e);
         setSelectedIndex(index);
     };
+
     const handleLogout = () => {
         dispatch(userActions.logoutUser());
         navigate('/Login');
-      };
+    };
+
+    const handleClose = () => {
+        setLogout(false);
+    };
+
 
   return (  
-    <>  <Box component='a' className={classes.logo}>
+    <>  
+        <Box component='a' className={classes.logo}>
             <img src={img} className={classes.logoImg}/>
             <Typography className={classes.search} component='span'>SEARCH</Typography>
             <Typography className={classes.job} component='span'>JOB</Typography>
@@ -52,9 +63,9 @@ export const Sidebar : React.FC = () => {
                 <Typography variant='body1' className={classes.userName}>{user}</Typography>
                 <Typography variant='body2' className={classes.userDesignation}>Javascript Developer</Typography>
             </Stack>
-            <IconButton component='a' href='/Profile' className={classes.editIconBtn}>
+            <Link to='/Profile' className={classes.editIconBtn}>
               <EditIcon className={classes.editIcon} />
-            </IconButton>
+            </Link>
             
         </Box>
         <Box>
@@ -92,17 +103,30 @@ export const Sidebar : React.FC = () => {
                         </ListItemButton>
                     </ListItem>
                 </Link>
-                {/* <Link to='/Login' className={classes.navItem}> */}
+               
                     <ListItem disablePadding className={classes.navItem}>
                         <ListItemButton className={classes.navBtn} selected={selectedIndex === 4}
-                        onClick={handleLogout}>
+                        onClick={()=>setLogout(true)}>
                             <ListItemIcon >
                                 <LogoutIcon/>
                             </ListItemIcon>
                             <ListItemText className={classes.navTxt}>Logout</ListItemText>
                         </ListItemButton>
                     </ListItem>
-                {/* </Link> */}
+                    <Dialog
+                        open={logout}
+                        onClose={handleClose}
+                        className={classes.logoutAlert}
+                    >
+                        <Typography className={classes.logoutText} >Do you want to Logout ?</Typography>
+                        
+                        <DialogActions>
+                            <Button onClick={handleClose}>Cancel</Button>
+                            <Button onClick={handleLogout } autoFocus className={classes.ok}>
+                                Ok
+                            </Button>
+                        </DialogActions>
+                    </Dialog>       
             </List>
         </Box>
     </>    

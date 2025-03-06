@@ -1,7 +1,6 @@
-import { Box } from "@mui/material";
 import useStyle from "./LandingPage.css";
 import img from '../../assets/Images/Logo_1.png';
-import {Typography, Container, Button} from "@mui/material";
+import {Typography, Container, Button, Box} from "@mui/material";
 import { useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch} from "react-redux";
@@ -9,7 +8,6 @@ import { userActions } from "../../Store/Slice/userAuthSlice";
 import { filterActions } from "../../Store/Slice/FiltersSlice";
 import Data from "../../Database/Data";
 import { useAppSelector } from "../../Store/Store";
-// import { userActions } from "../../Store/Slice/userAuthSlice";
 
 const LandingPage = () => {
 
@@ -56,37 +54,34 @@ const LandingPage = () => {
   const [formValues, setFormValues] = useState(userObject);
   const [isSubmit,setIsSubmit] = useState(false);
   
-     useEffect(()=>{     
-        Data(url).then((data)=>{   
-             Filter(data);
-           })
-        .catch((err)=>console.log(err)).finally(()=>console.log('submitted'));
-        if (currentUser) {
-          navigate("/");
-        } else {
-          navigate("/Login");
-        }
-     },[navigate,currentUser]);
-  
-     const Filter = (data:Job[]) => {
+  useEffect(()=>{     
+    Data(url).then((data)=>{   
+          Filter(data);
+        })
+    .catch((err)=>console.log(err)).finally(()=>console.log('submitted'));
+    if (currentUser) {
+      navigate("/");
+    } else {
+      navigate("/Login");
+    }
+  },[]);
 
-          const allCat = data.map((item: Job) => {
-             return item.employment_type;
-          })
-          const allLoc = data.map((item: Job) => {
-             return item.location;
-          })
-          const myCat = [...new Set(allCat)];
-          const myLoc = [...new Set(allLoc)];
-          const catData = slicer(myCat);
-          const locData = slicer(myLoc);
-          dispatch(filterActions.setFilter({catData,locData}));   
-              
-     }
+  const Filter = (data:Job[]) => {
 
-     const slicer = (data:string[]) => data.slice(0,6);
+      const allCat = data.map((item: Job) => {
+          return item.employment_type;
+      })
+      const allLoc = data.map((item: Job) => {
+          return item.location;
+      })
+      const myCat = [...new Set(allCat)];
+      const myLoc = [...new Set(allLoc)];
+      const catData = myCat.slice(0,6);
+      const locData = myLoc .slice(0,6);
+
+      dispatch(filterActions.setFilter({catData,locData}));         
+  }
      
-
   const handleChange = (e:inputData) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
@@ -116,7 +111,7 @@ const LandingPage = () => {
         if(currentuser){  
           navigate("/");
           return;
-        } console.log("inside function");
+        } 
           navigate("/Login");
       }
   
@@ -127,41 +122,40 @@ const LandingPage = () => {
 
    const validate = (values:stringObject) => {
     
-    const errors: stringObject = { username : '',email: '', password: ''};
-    const regexUsername = /^[A-Za-z\s]+$/;
-    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const regexPassword = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&+=!]).{8,}$/;
+      const errors: stringObject = { username : '',email: '', password: ''};
+      const regexUsername = /^[A-Za-z\s]+$/;
+      const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const regexPassword = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&+=!]).{8,}$/;
 
-    if(isSignup) {
+      if(isSignup) {
 
-          if (values.username==='') {
-            errors.username = "Username is required!";
-          }
-          else if (!regexUsername.test(values.username)) {
-            errors.username = "Username can only contain letters and spaces.";
-            
-          }
-    }
-    if (values.email==='') {
-      errors.email = "Email is required!";
-     
-    }
-    else if (!regexEmail.test(values.email)) {
-      errors.email = "Invalid email format.";
-     
-    }
-    if (values.password==='') {
-      errors.password = "Password is required!";
-      
-    }
-    else if (!regexPassword.test(values.password)) {
-      errors.password =
-        "Password must be at least 8 characters and include an uppercase letter, a lowercase letter, a number, and a special character.";
-       
+            if (values.username==='') {
+              errors.username = "Username is required!";
+            }
+            else if (!regexUsername.test(values.username)) {
+              errors.username = "Username can only contain letters and spaces.";
+              
+            }
       }
-    return errors;
+      if (values.email==='') {
+        errors.email = "Email is required!";
+      
+      }
+      else if (!regexEmail.test(values.email)) {
+        errors.email = "Invalid email format.";
+      
+      }
+      if (values.password==='') {
+        errors.password = "Password is required!";
+        
+      }
+      else if (!regexPassword.test(values.password)) {
+        errors.password =
+          "Password must be at least 8 characters and include an uppercase letter, a lowercase letter, a number, and a special character.";
+        
+        }
+      return errors;
    };
-
 
   return (
     <>

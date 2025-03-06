@@ -72,15 +72,10 @@ const Searchbar = (props:Props) => {
     const [catValue, setCatValue] = useState('');
     const [locValue, setLocValue] = useState('');
     const handleCatChange = (event:React.FormEvent) => {
-          setCatValue((event.target as HTMLInputElement).value);
-        //   const newCategories = (event.target as HTMLInputElement).value   
-        //   props.onFilterChange({ location: [locValue], category: [newCategories] });
-          
+          setCatValue((event.target as HTMLInputElement).value)
         };
         const handleLocChange = (event:React.FormEvent) => {
           setLocValue((event.target as HTMLInputElement).value);
-        //   const newLocations = (event.target as HTMLInputElement).value
-        //   props.onFilterChange({ location: [newLocations], category: [catValue] });
         };
         console.log(catValue);
         console.log(locValue);
@@ -88,7 +83,7 @@ const Searchbar = (props:Props) => {
             props.onFilterChange({ location: [locValue], category: [catValue] });
         }
     const classes = useStyle();
-  return (
+    return (
         <Box className={classes.locationBox}>
           <Box className={classes.outerbox}>
              <Box className={classes.box}>

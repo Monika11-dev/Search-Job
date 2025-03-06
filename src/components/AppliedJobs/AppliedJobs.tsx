@@ -24,43 +24,34 @@ interface Job {
  }
 
 const AppliedJobs = (props:Props) => {
-console.log(props.jobs);
-console.log(props.myJobs);
   const classes = useStyle();
-
   const filteredJobs = props.jobs.filter((item:Job) => props.myJobs.includes(item.id));
-
-  console.log(filteredJobs);
-
-
   return (
    <>
-   {filteredJobs.slice((props.page-1) * props.rowsPerPage, ((props.page-1) * props.rowsPerPage) + props.rowsPerPage).map((item:Job) => (
-         <Grid container columnSpacing={{lg:1}} sx={{my:'10px'}}>
-         <Grid item xs={1}>
-            <img  src={img1} className={classes.companyLogo}/>
-         </Grid>
-         <Grid item xs={9}>
-            <Grid container direction='column' rowSpacing='3px'>
-            <Grid item ><Typography className={classes.jobProfile}>{item.title}</Typography></Grid>
-            <Grid item >  
-               <Grid container>
-                  <Grid item xs={4}><Typography className={classes.company}>{item.company} </Typography></Grid>
-                  <Grid item xs={3}><Typography className={classes.jobDetails}><LocationOnIcon sx={{height: 15, width: 15, color: '#7A7A7A'}}/>{item.location}</Typography></Grid>
-                  {/* <Grid item xs={2}><Typography className={classes.jobDetails}>24 hours ago</Typography></Grid> */}
-                  <Grid item xs={3}><Typography className={classes.jobDetails}>{item.employment_type}</Typography></Grid>
+         {filteredJobs.slice((props.page-1) * props.rowsPerPage, ((props.page-1) * props.rowsPerPage) + props.rowsPerPage).map((item:Job) => (
+            <Grid container columnSpacing={{lg:1}}>
+               <Grid item xs={1}>
+                  <img  src={img1} className={classes.companyLogo}/>
+               </Grid>
+               <Grid item xs={9}>
+                  <Grid container direction='column' rowSpacing='3px'>
+                  <Grid item ><Typography className={classes.jobProfile}>{item.title}</Typography></Grid>
+                  <Grid item >  
+                     <Grid container>
+                        <Grid item xs={4}><Typography className={classes.company}>{item.company} </Typography></Grid>
+                        <Grid item xs={3}><Typography className={classes.jobDetails}><LocationOnIcon sx={{height: 15, width: 15, color: '#7A7A7A'}}/>{item.location}</Typography></Grid>
+                  
+                        <Grid item xs={3}><Typography className={classes.jobDetails}>{item.employment_type}</Typography></Grid>
+                     </Grid>
+                  </Grid>
+                  </Grid>
+               </Grid>
+               <Grid item xs={2} >
+                  <Typography className={classes.fulltime}>full time</Typography>  
                </Grid>
             </Grid>
-            </Grid>
-         </Grid>
-         <Grid item xs={2} >
-            <Typography className={classes.fulltime}>Full time</Typography>  
-         </Grid>
-      </Grid>
-   ))}
-      
-      
-      </>
+         ))}   
+   </>
    )
 }
 

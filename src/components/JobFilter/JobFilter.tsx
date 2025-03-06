@@ -31,8 +31,6 @@ const JobFilter = (props:Props) => {
     props.onFilterChange({ location: selectedLocation, category: newCategories });
   };
 
-  console.log(selectedLocation);
-
   const classes = useStyle();
 
   return (

@@ -298,7 +298,6 @@ const Profile = () => {
   };
   return (
 
-    // <Box component='section' className={classes.Bg}>
         <Box component = 'div' className={classes.formBg}>
 
             <form onSubmit={handleSubmit}>
@@ -559,7 +558,7 @@ const Profile = () => {
             <Button variant='contained' type='submit'  size='small' sx={{borderRadius: '22px', padding: '8px 15px'}}><Typography className={classes.save}>Save Profile</Typography></Button>
             </form>
         </Box>
-    // </Box>
+  
   )
 }
 

@@ -17,21 +17,18 @@ interface Job {
    number_of_opening: number,
  }
  
- interface Props {
-   
+ interface Props {  
    jobs: Job[],
    page: number,
    rowsPerPage: number,
  }
 
-const ApplyJobs = (props:Props) => {
-   
+const ApplyJobs = (props:Props) => {   
     const classes = useStyle();
- 
     return (
       <>
           {props.jobs.slice((props.page-1) * props.rowsPerPage, ((props.page-1) * props.rowsPerPage) + props.rowsPerPage).map((item) => (
-             <Grid container columnSpacing={{lg:1}} sx={{my:'15px'}} className={classes.border} key={item.id}>
+             <Grid container columnSpacing={{lg:1}} sx={{marginBottom : '10px'}} className={classes.border} key={item.id}>
                <Grid item xs={1}>
                   <img  src={img1} className={classes.companyLogo}/>
                </Grid>
@@ -48,7 +45,6 @@ const ApplyJobs = (props:Props) => {
                   </Grid>
                </Grid>
                <Grid item xs={2} sx={{alignSelf:'center'}}>
-                  <Typography className={classes.fulltime}>Full time</Typography> 
                   <Link  className={classes.ApplyBtn} to={ `/JobDescription/${item.id}`} 
                     state={{ description: `${item.description}`, qualifications: `${item.qualifications}`, 
                     address : `${item.location}`, 

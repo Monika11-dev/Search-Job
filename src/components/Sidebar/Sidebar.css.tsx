@@ -37,8 +37,8 @@ const useStyle = makeStyles<Theme>((theme)=>({
     },
     avatar:{
         backgroundColor: 'white !important',
-        height: '55px !important',
-        width: '55px !important',
+        height: '50px !important',
+        width: '50px !important',
         '& svg': {
             height: '30px',
             width: '30px',
@@ -51,11 +51,11 @@ const useStyle = makeStyles<Theme>((theme)=>({
     },
     editIconBtn: {
         height: '15px !important',
-        width: '15px !important',
-        fill: `${theme.palette.secondary.light} !important`,
+        width: '15px !important',    
     },
     editIcon: {
         fontSize: '1rem !important',
+        fill: `${theme.palette.secondary.light} !important`,
     },
     navItem: {
         textDecoration: 'none',
@@ -116,6 +116,25 @@ const useStyle = makeStyles<Theme>((theme)=>({
         color: theme.palette.primary.dark,
         marginLeft: 1,
     },
+    logoutText: {
+        ...theme.typography.h2,
+       
+    },
+    logoutAlert: {
+        height: '200px',
+        '& .MuiDialog-container .MuiPaper-root': {
+            width: '350px',
+            padding: '20px',
+        },
+        '& button': {
+            padding:0,
+            textTransform: 'capitalize',
+        }
+             
+    },
+    ok: {
+        minWidth: '35px !important',
+    }
 }));
 
 export default useStyle;

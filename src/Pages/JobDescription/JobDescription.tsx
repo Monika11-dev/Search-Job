@@ -35,6 +35,7 @@ const JobDescription = () => {
             navigate("/Login");
           }
     })
+
   return (
     <Grid container sx={{justifyContent: 'space-between'}} >
         <Grid item sm={12} md={9} className={classes.colOne}>
@@ -47,13 +48,12 @@ const JobDescription = () => {
                     </Grid>
                     <Grid item xs={8} md={7} sx={{marginLeft: {lg:'15px'}}}>
                         <Grid container direction='column' rowSpacing='1px'>
-                        <Grid item ><Typography className={classes.jobProfile}>Technical Associate</Typography></Grid>
+                        <Grid item ><Typography className={classes.jobProfile}>{title}</Typography></Grid>
                         <Grid item>  
                             <Grid container>
-                                <Grid item xs={4}><Typography className={classes.company}>Tata Consultancy Services</Typography></Grid>
+                                <Grid item xs={4}><Typography className={classes.company}>{company}</Typography></Grid>
                                 <Grid item xs={4}><Typography className={classes.jobDetails}><LocationOnIcon sx={{height: 15, width: 15, color: '#7A7A7A'}}/>Noida</Typography></Grid>
-                                {/* <Grid item xs={2}><Typography className={classes.jobDetails}>{item.created_at}</Typography></Grid> */}
-                                <Grid item xs={3}><Typography className={classes.jobDetails}>Fresher</Typography></Grid>
+                                <Grid item xs={3}><Typography className={classes.jobDetails}>{employment}</Typography></Grid>
                                 {/* <Grid item xs={2}><Typography className={classes.jobDetails}>view details</Typography></Grid> */}
                             </Grid>
                         </Grid>
@@ -69,7 +69,6 @@ const JobDescription = () => {
                   <Typography className={classes.descriptionHeading}>Job Description</Typography>
                   <Typography className={classes.descriptionDetails}>{description}</Typography>
                   <Typography className={classes.descriptionHeading}>Qualification</Typography>
-                  {/* <Typography className={classes.descriptionDetails}>{qualifications}</Typography> */}
                   
                     <List dense={false} className={classes.qualiList}>
                      {qualification.map((item:string[])=>(

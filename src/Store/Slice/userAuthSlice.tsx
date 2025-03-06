@@ -73,8 +73,6 @@ export const userAuthSlice = createSlice({
       localStorage.setItem("currentSearchJobEmail",JSON.stringify(newUser.email));
       state.currentUser = newUser.username;
       state.currentEmail = newUser.email; 
-      alert("Account Created !");
-      
     },
 
     loginUser(state,action){
@@ -89,8 +87,6 @@ export const userAuthSlice = createSlice({
           localStorage.setItem("currentSearchJobEmail",JSON.stringify(user.email));
           state.currentUser = user.username;
           state.currentEmail = user.email; 
-          alert('Redirecting to the home page.');
-          
       }
       else {
           alert("Invalid email or password. Please try again");       
@@ -102,8 +98,8 @@ export const userAuthSlice = createSlice({
       localStorage.removeItem("currentSearchJobEmail");
       state.currentUser = '';
       state.currentEmail = '';
-      alert("You have been logged out.");
   },
+  
   updateProfile(state,action){
     const userProfile = action.payload;  
     const emailExists = state.existingProfile.find(

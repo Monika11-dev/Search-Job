@@ -58,7 +58,6 @@ const useStyle = makeStyles<Theme>((theme)=> ({
         marginBottom: '5px !important',
      }, 
      ApplyBtn: {
-        // padding: '0px !important',
         marginTop: '4px !important',
         backgroundColor: `${theme.palette.primary.main} !important`,
         color: 'white !important',
