@@ -106,17 +106,45 @@ export const userAuthSlice = createSlice({
   },
   updateProfile(state,action){
     const userProfile = action.payload;  
-    if(state.currentEmail === userProfile.email){
+    const emailExists = state.existingProfile.find(
+      (user:Profile) => user.email === userProfile.email
+    );
+    if(emailExists){
       const updatedProfile = state.existingProfile.map((item:Profile) =>
         item.email === userProfile.email
-          ? { ...item, name: userProfile.name , email : userProfile.email, mobile :userProfile.mobile,location : userProfile.location }
+          ? { ...item, 
+            firstname: userProfile.firstname,
+          lastname: userProfile.lastname,
+          title: userProfile.title,
+          languages: userProfile.languages,
+          current: userProfile.current,
+          expected: userProfile.expected,
+          message: userProfile.message,
+          mobile: userProfile.mobile,
+          country: userProfile.country,
+          state: userProfile.state,
+          pincode: userProfile.pincode,
+          street: userProfile.street,
+          degree: userProfile.degree,
+          university: userProfile.university,
+          grade: userProfile.grade,
+          year: userProfile.year,
+          designation: userProfile.designation,
+          employment: userProfile.employment,
+          company: userProfile.company,
+          location: userProfile.location,
+          skill1: userProfile.skill1,
+          skill2: userProfile.skill2,
+           }
           : item
       );
       localStorage.setItem("SearchJobProfile", JSON.stringify(updatedProfile));
+      alert("Your profile is successfully updated");
         return;
     }
     state.existingProfile.push(userProfile);
     localStorage.setItem("SearchJobProfile", JSON.stringify(state.existingProfile));
+    alert("Your profile is successfully updated");
   }
     
   },

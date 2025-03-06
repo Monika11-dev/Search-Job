@@ -1,14 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 // import type { PayloadAction } from '@reduxjs/toolkit'
 
-interface stringObject {
-  title : string,
-  location: string,
-  id:string,
+interface idObj {
+  id: string,
+  userEmail : string,
 }
 
 interface AppliedJobs {
-  jobs : stringObject[];  
+  jobs :idObj[];  
 }
 
 const initialState: AppliedJobs = {
@@ -36,8 +35,7 @@ export const appliedJobsSlice = createSlice({
 
       state.jobs = [...state.jobs, jobDetail];
       console.log(state.jobs);
-      localStorage.setItem("ApppliedJobs", JSON.stringify(state.jobs));
-    
+      localStorage.setItem("ApppliedJobs", JSON.stringify(state.jobs));  
       alert("Successfully Applied !");
       
     },

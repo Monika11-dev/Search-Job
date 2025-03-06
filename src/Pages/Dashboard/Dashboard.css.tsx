@@ -57,6 +57,7 @@ const useStyle = makeStyles<Theme>((theme)=>({
    },
    tabpanel: {
       padding: '24px 0px !important',
+      minHeight: '350px',
    },
    pageBox: {
       margin: '20px 0px',

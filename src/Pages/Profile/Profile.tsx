@@ -3,7 +3,10 @@ import useStyle from "./Profile.css";
 import Formtitle from "../../components/FormTitle/Formtitle";
 import Formlabel from "../../components/FormLabel/Formlabel";
 import { ChangeEvent, FormEvent, useState } from "react";
-
+import { useDispatch} from "react-redux";
+import { useEffect } from "react";
+import { userActions } from "../../Store/Slice/userAuthSlice";
+import { useAppSelector} from "../../Store/Store";
 
 const countryStateMap = {
     USA: ["California", "Texas", "New York"],
@@ -20,7 +23,7 @@ const countryStateMap = {
     expected: string,
     message: string,
     mobile: string,
-    email: string,
+    email : string,
     country: string,
     state: string,
     pincode:string,
@@ -66,8 +69,12 @@ const Profile = () => {
   }
 
   const classes = useStyle();
+  const dispatch = useDispatch();
   const [states, setStates] = useState<string[]>([]);
   const [errors, setErrors] = useState(Error);
+  const [isSubmit,setIsSubmit] = useState(false);
+  const userEmail : string = useAppSelector(state => state.userAuth.currentEmail);
+  const Profile = JSON.parse(localStorage.getItem("SearchJobProfile") as string) || [];
   const [formValues, setFormValues] = useState({
     firstname: "",
     lastname: "",
@@ -76,8 +83,8 @@ const Profile = () => {
     current: '',
     expected: '',
     message: "",
+    email: userEmail,
     mobile: '',
-    email: "",
     country: "",
     state: "",
     pincode:'',
@@ -93,7 +100,39 @@ const Profile = () => {
     skill1:'',
     skill2: '', 
   });
-
+  
+  useEffect(()=> {
+    const emailExists = Profile.find(
+      (user:errors) => user.email === userEmail
+    );
+    // alert(emailExists);
+    if(emailExists){
+      setFormValues({ ...formValues,
+        firstname: emailExists.firstname,
+          lastname: emailExists.lastname,
+          title: emailExists.title,
+          languages: emailExists.languages,
+          current: emailExists.current,
+          expected: emailExists.expected,
+          message: emailExists.message,
+          mobile: emailExists.mobile,
+          country: emailExists.country,
+          state: emailExists.state,
+          pincode: emailExists.pincode,
+          street: emailExists.street,
+          degree: emailExists.degree,
+          university: emailExists.university,
+          grade: emailExists.grade,
+          year: emailExists.year,
+          designation: emailExists.designation,
+          employment: emailExists.employment,
+          company: emailExists.company,
+          location: emailExists.location,
+          skill1: emailExists.skill1,
+          skill2: emailExists.skill2, 
+      });
+    }
+  },[]);
   
 
   const validateForm = () => {
@@ -101,6 +140,7 @@ const Profile = () => {
 
     const regexUsername = /^[A-Za-z\s]+$/;
     const numberonly = /^[0-9]+$/;
+    // const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!formValues.firstname) newErrors.firstname = "First Name is required.";
 
@@ -210,20 +250,31 @@ const Profile = () => {
     if (!formValues.skill1) newErrors.skill1 = "skill1 is required.";
 
     if (!formValues.skill2) newErrors.skill2 = "skill2 is required.";
-
     setErrors(newErrors);
-    return true;
+    return newErrors;
 
   };
 
   const handleSubmit = (e:FormEvent) => {
     e.preventDefault();
+
+    const errors = validateForm();
+
+    setIsSubmit(true);
     // validateForm();
-    if (validateForm()) {
-    console.log(formValues);
-    console.log(errors);
-    //   alert("User details saved successfully ! ")
+    const areErrorsEmpty = (errors: errors) => {
+      return Object.values(errors).every(value => value === '');
+    };
+    if (areErrorsEmpty(errors)) {
+      setIsSubmit(true);
+      dispatch(userActions.updateProfile({...formValues,userEmail}));  
+      
+    } else {
+      
+      setIsSubmit(false);
     }
+   
+    
   };
 
 
@@ -334,7 +385,9 @@ const Profile = () => {
                     <TextField  placeholder="Email Address" name="email" fullWidth type="email" size="small" className={classes.textField}
                     value={formValues.email}
                     onChange={handleChange} error={!!errors.email}
-                    helperText={errors.email}/>
+                    helperText={errors.email}
+                    
+                    />
                 </Grid>
                 
                 <Grid item xs={6}>

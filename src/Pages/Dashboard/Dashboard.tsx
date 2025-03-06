@@ -9,7 +9,6 @@ import JobFilter from '../../components/JobFilter/JobFilter';
 import theme from '../../Theme/theme';
 import FilterDropdown from '../../components/FilterDropdown/FilterDropdown';
 import { useAppSelector } from '../../Store/Store';
-// import JobCarousel from '../../components/JobCarousel/JobCarousel';
 import Data from '../../Database/Data';
 import ApplyJobs from '../../components/AppliedJobs/ApplyJobs';
 import Searchbar from '../../components/Searchbar/Searchbar';
@@ -28,6 +27,11 @@ interface Job {
   number_of_opening: number,
 }
 
+interface idObj {
+  id: string,
+  userEmail : string,
+}
+
 
 const Dashboard = () => {
 
@@ -36,7 +40,11 @@ const Dashboard = () => {
   const isDesktopValue = useMediaQuery(theme.breakpoints.up(1024));
   const category : string[] = useAppSelector(state => state.jobsFilter.cats);
   const location : string[] = useAppSelector(state => state.jobsFilter.loc);
+  const userEmail : string = useAppSelector(state => state.userAuth.currentEmail);
+  const appliedJobsData : idObj[] = useAppSelector(state => state.userJobs.jobs);
+  console.log(appliedJobsData);
   const [page, setPage] = useState(1);
+  const [myJobs, setMyJobs] = useState<string[]>([]);
   const [filters, setFilters] = useState({
     location: [] as string[],
     category: [] as string[],
@@ -99,8 +107,24 @@ const Dashboard = () => {
         
         Data(url).then((data)=>{   
            setJobs(data);
-        }).catch((err)=>console.log(err)).finally(()=>console.log('submitted'));
-     },[url]);
+         }).catch((err)=>console.log(err)).finally(()=>console.log('submitted'));
+        },[url]);
+
+  useEffect(() => {
+    const applied : string[] = [];
+    appliedJobsData.filter(
+      (item) => {
+        if(item.userEmail === userEmail){
+            applied.push(item.id);
+        }
+
+      }
+    );
+    setMyJobs(applied);
+  },[]);
+
+  console.log(myJobs);
+
   return (
 
     <>
@@ -123,28 +147,23 @@ const Dashboard = () => {
                       <TabList className={classes.tabBox} onChange={handleChange} >
                         <Tab className={classes.tab} label="Applied" value="1" sx={{textTransform: "capitalize"}}/>
                         <Tab className={classes.tab} label="Saved" value="2" sx={{textTransform: "capitalize"}}/>
-                        <Tab className={classes.tab} label="In Progress" value="3" sx={{textTransform: "capitalize"}}/>
+                        {/* <Tab className={classes.tab} label="In Progress" value="3" sx={{textTransform: "capitalize"}}/> */}
                       </TabList>
                     </Box>
                     <TabPanel value="1" className={classes.tabpanel}>
-                       <AppliedJobs />
-                       <AppliedJobs />
-                       <AppliedJobs />
-                       <AppliedJobs />
-                       <AppliedJobs />
-                       
-                       
-                       
+
+                     {(myJobs.length!==0) ? <AppliedJobs myJobs={myJobs} jobs={jobs} page={page} rowsPerPage={5}/> : "No applied Jobs !" }                              
+                                             
                     </TabPanel>
-                    <TabPanel value="2">Item Two</TabPanel>
-                    <TabPanel value="3">Item Three</TabPanel>
+                    <TabPanel value="2">No saved Jobs !</TabPanel>
+                    {/* <TabPanel value="3">Item Three</TabPanel> */}
                   </TabContext>
                   </>
                      ) }
                     
                 
-
-              <Pagination count={10} className={classes.pageBox} page={page} onChange={handleChangePage}/>
+              {(filteredJobs.length>0 || myJobs.length>0) && <Pagination count={10} className={classes.pageBox} page={page} onChange={handleChangePage}/>}
+              
               {/* <Box component='section' className={classes.suggestedJobsbox}>
                 <Subheading heading='Suggested Jobs'/>
                 <JobCarousel/>

@@ -20,9 +20,9 @@ const useStyle = makeStyles<Theme>((theme)=>({
         // boxSizing:'border-box',
         // display: 'flex',
         alignItems: 'center',
-        '& .MuiListItem-root': {
-            marginBottom: '10px',
-        },
+        // '& .MuiListItem-root': {
+        //     marginBottom: '10px',
+        // },
         '& .Mui-checked': {
             color: `${theme.palette.primary.main} !important`,
         },

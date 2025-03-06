@@ -11,18 +11,20 @@ import theme from "../../Theme/theme";
 import { useDispatch } from "react-redux";
 import { jobsActions } from "../../Store/Slice/appliedJobsSlice";
 import { useNavigate } from "react-router-dom";
+import { useAppSelector} from "../../Store/Store";
 
 const JobDescription = () => {
     const location = useLocation()
     const { description, qualifications, address, title, salary, opening, id, company, employment } = location.state;
     const qualification = JSON.parse(qualifications);
     const isDesktopValue = useMediaQuery(theme.breakpoints.up(1024));
+    const userEmail : string = useAppSelector(state => state.userAuth.currentEmail);
     const classes = useStyle();
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handleApply = () => {
-         dispatch(jobsActions.applyJobs({title,address,id,company,employment})); 
+         dispatch(jobsActions.applyJobs({id,userEmail})); 
          navigate('/');
     } 
   return (
