@@ -10,6 +10,7 @@ import { useAppSelector } from '../../Store/Store';
 // import CircularProgress from '@mui/joy/CircularProgress';
 import { Data } from '../../Database/Data';
 import Searchbar from '../../components/Searchbar/Searchbar';
+import { useNavigate } from 'react-router-dom';
 
 interface Job {
    title: string;
@@ -28,6 +29,7 @@ interface Job {
 const Jobs = () => {
    const classes = useStyle();
    const url = 'https://jsonfakery.com/jobs'; 
+   const navigate = useNavigate();
    // const rowsPerPage = 5;
    const isDesktopValue = useMediaQuery(theme.breakpoints.up(1024));
    const [jobs, setJobs] = useState([]);
@@ -40,15 +42,21 @@ const Jobs = () => {
    const [page, setPage] = useState(1);
    const category : string[] = useAppSelector(state => state.jobsFilter.cats);
    const location : string[] = useAppSelector(state => state.jobsFilter.loc);
+   const currentUser : string = useAppSelector(state => state.userAuth.currentUser);
    
    useEffect(()=>{
       setLoading(true);
+      if (currentUser) {
+         navigate("/Jobs");
+       } else {
+         navigate("/Login");
+       }
       Data(url).then((data)=>{   
          setJobs(data);
          // Filter(data);
          setLoading(false)})
       .catch((err)=>console.log(err)).finally(()=>console.log('submitted'));
-   },[url]);
+   },[navigate,currentUser]);
    console.log(filters);
 
    // const Filter = (data:Job[]) => {

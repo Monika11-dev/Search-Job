@@ -8,7 +8,8 @@ import { useDispatch} from "react-redux";
 import { userActions } from "../../Store/Slice/userAuthSlice";
 import { filterActions } from "../../Store/Slice/FiltersSlice";
 import Data from "../../Database/Data";
-// import { useAppSelector } from "../../Store/Store";
+import { useAppSelector } from "../../Store/Store";
+// import { userActions } from "../../Store/Slice/userAuthSlice";
 
 const LandingPage = () => {
 
@@ -49,6 +50,7 @@ const LandingPage = () => {
   const url = 'https://jsonfakery.com/jobs'; 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const currentUser : string = useAppSelector(state => state.userAuth.currentUser);
   const [isSignup, setSignup] = useState(false);
   const [validateErrors, setValidateErrors] = useState(userObject);
   const [formValues, setFormValues] = useState(userObject);
@@ -59,7 +61,12 @@ const LandingPage = () => {
              Filter(data);
            })
         .catch((err)=>console.log(err)).finally(()=>console.log('submitted'));
-     },[]);
+        if (currentUser) {
+          navigate("/");
+        } else {
+          navigate("/Login");
+        }
+     },[navigate,currentUser]);
   
      const Filter = (data:Job[]) => {
 

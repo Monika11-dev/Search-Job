@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 import { jobsActions } from "../../Store/Slice/appliedJobsSlice";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector} from "../../Store/Store";
+import { useEffect } from "react";
 
 const JobDescription = () => {
     const location = useLocation()
@@ -19,6 +20,7 @@ const JobDescription = () => {
     const qualification = JSON.parse(qualifications);
     const isDesktopValue = useMediaQuery(theme.breakpoints.up(1024));
     const userEmail : string = useAppSelector(state => state.userAuth.currentEmail);
+    const currentUser : string = useAppSelector(state => state.userAuth.currentUser);
     const classes = useStyle();
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -27,6 +29,12 @@ const JobDescription = () => {
          dispatch(jobsActions.applyJobs({id,userEmail})); 
          navigate('/');
     } 
+
+    useEffect(()=>{
+        if (currentUser === '') {
+            navigate("/Login");
+          }
+    })
   return (
     <Grid container sx={{justifyContent: 'space-between'}} >
         <Grid item sm={12} md={9} className={classes.colOne}>

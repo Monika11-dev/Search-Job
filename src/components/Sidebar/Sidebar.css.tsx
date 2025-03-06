@@ -49,10 +49,13 @@ const useStyle = makeStyles<Theme>((theme)=>({
             width: '40px !important',
         }
     },
-    editIcon: {
+    editIconBtn: {
         height: '15px !important',
         width: '15px !important',
         fill: `${theme.palette.secondary.light} !important`,
+    },
+    editIcon: {
+        fontSize: '1rem !important',
     },
     navItem: {
         textDecoration: 'none',

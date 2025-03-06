@@ -1,4 +1,4 @@
-import {Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Avatar, Typography, Stack} from '@mui/material';
+import {Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Avatar, Typography, Stack,IconButton} from '@mui/material';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 // import WorkIcon from '@mui/icons-material/Work';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
@@ -48,7 +48,10 @@ export const Sidebar : React.FC = () => {
                 <Typography variant='body1' className={classes.userName}>{user}</Typography>
                 <Typography variant='body2' className={classes.userDesignation}>Javascript Developer</Typography>
             </Stack>
-            <EditIcon className={classes.editIcon}/>
+            <IconButton LinkComponent={Link} to='/Profile' className={classes.editIconBtn}>
+              <EditIcon className={classes.editIcon} />
+            </IconButton>
+            
         </Box>
         <Box>
             <List disablePadding>

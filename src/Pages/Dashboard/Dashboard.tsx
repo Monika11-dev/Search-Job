@@ -12,6 +12,7 @@ import { useAppSelector } from '../../Store/Store';
 import Data from '../../Database/Data';
 import ApplyJobs from '../../components/AppliedJobs/ApplyJobs';
 import Searchbar from '../../components/Searchbar/Searchbar';
+import { useNavigate } from 'react-router-dom';
 
 interface Job {
   title: string;
@@ -38,9 +39,11 @@ const Dashboard = () => {
   const classes = useStyle();
   const url = 'https://jsonfakery.com/jobs';
   const isDesktopValue = useMediaQuery(theme.breakpoints.up(1024));
+  const navigate = useNavigate();
   const category : string[] = useAppSelector(state => state.jobsFilter.cats);
   const location : string[] = useAppSelector(state => state.jobsFilter.loc);
   const userEmail : string = useAppSelector(state => state.userAuth.currentEmail);
+  const currentUser : string = useAppSelector(state => state.userAuth.currentUser);
   const appliedJobsData : idObj[] = useAppSelector(state => state.userJobs.jobs);
   console.log(appliedJobsData);
   const [page, setPage] = useState(1);
@@ -121,7 +124,12 @@ const Dashboard = () => {
       }
     );
     setMyJobs(applied);
-  },[]);
+    if (currentUser) {
+      navigate("/");
+    } else {
+      navigate("/Login");
+    }
+  },[navigate,currentUser]);
 
   console.log(myJobs);
 

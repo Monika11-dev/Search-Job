@@ -7,6 +7,7 @@ import { useDispatch} from "react-redux";
 import { useEffect } from "react";
 import { userActions } from "../../Store/Slice/userAuthSlice";
 import { useAppSelector} from "../../Store/Store";
+import { useNavigate } from "react-router-dom";
 
 const countryStateMap = {
     USA: ["California", "Texas", "New York"],
@@ -70,10 +71,12 @@ const Profile = () => {
 
   const classes = useStyle();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [states, setStates] = useState<string[]>([]);
   const [errors, setErrors] = useState(Error);
   const [isSubmit,setIsSubmit] = useState(false);
   const userEmail : string = useAppSelector(state => state.userAuth.currentEmail);
+  const currentUser : string = useAppSelector(state => state.userAuth.currentUser);
   const Profile = JSON.parse(localStorage.getItem("SearchJobProfile") as string) || [];
   const [formValues, setFormValues] = useState({
     firstname: "",
@@ -102,6 +105,11 @@ const Profile = () => {
   });
   
   useEffect(()=> {
+    if (currentUser) {
+      navigate("/Profile");
+    } else {
+      navigate("/Login");
+    }
     const emailExists = Profile.find(
       (user:errors) => user.email === userEmail
     );
@@ -532,14 +540,14 @@ const Profile = () => {
             <Formtitle heading='Add Skills'/>
             <Grid container justifyContent='space-between' sx={{marginBottom: '40px'}} rowSpacing={4} columnSpacing={{ xs: 1, sm: 2, md: 5 }}>
                 <Grid item xs={6}>
-                    <Formlabel label='Skill 1'/>
+                    <Formlabel label='Skill Set 1'/>
                     <TextField  placeholder="Skill 1"  name="skill1" fullWidth type="text" size="small" className={classes.textField}
                     value={formValues.skill1}
                     onChange={handleChange} error={!!errors.skill1}
                     helperText={errors.skill1}/>
                 </Grid>
                 <Grid item xs={6}>
-                    <Formlabel label='Skill 2'/>
+                    <Formlabel label='Skill Set 2'/>
                     <TextField  placeholder="skill2" name="skill2" fullWidth type="text" size="small" className={classes.textField}
                     value={formValues.skill2}
                     onChange={handleChange} error={!!errors.skill2}
