@@ -568,7 +568,8 @@ const Profile = () => {
                 
                 
             </Grid>
-            <Button variant='contained' type='submit'  size='small' sx={{borderRadius: '22px', padding: '8px 15px'}}><Typography className={classes.save}>Save Profile</Typography></Button>
+            <Button variant='contained' type='submit'  size='small' sx={{borderRadius: '22px', padding: '8px 15px', marginRight: '10px'}}><Typography className={classes.save}>Save Profile</Typography></Button>
+            <Button variant='contained' size='small' onClick={display} sx={{borderRadius: '22px', padding: '8px 15px'}}><Typography className={classes.save}>Go back</Typography></Button>
             </form>
         </Box>)
         }
