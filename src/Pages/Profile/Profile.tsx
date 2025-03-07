@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { userActions } from "../../Store/Slice/userAuthSlice";
 import { useAppSelector} from "../../Store/Store";
 import { useNavigate } from "react-router-dom";
+import ProfileDisplay from "../../components/ShowProfile/ProfileDisplay";
 
 const countryStateMap = {
     USA: ["California", "Texas", "New York"],
@@ -74,6 +75,7 @@ const Profile = () => {
   const navigate = useNavigate();
   const [states, setStates] = useState<string[]>([]);
   const [errors, setErrors] = useState(Error);
+  const [displayProfile, setDisplayProfile] = useState(true);
   const [isSubmit,setIsSubmit] = useState(false);
   const userEmail : string = useAppSelector(state => state.userAuth.currentEmail);
   const currentUser : string = useAppSelector(state => state.userAuth.currentUser);
@@ -113,8 +115,10 @@ const Profile = () => {
     const emailExists = Profile.find(
       (user:errors) => user.email === userEmail
     );
-    // alert(emailExists);
+    console.log(emailExists);
     if(emailExists){
+      
+      setDisplayProfile(false);
       setFormValues({ ...formValues,
         firstname: emailExists.firstname,
           lastname: emailExists.lastname,
@@ -273,18 +277,21 @@ const Profile = () => {
     const areErrorsEmpty = (errors: errors) => {
       return Object.values(errors).every(value => value === '');
     };
+
     if (areErrorsEmpty(errors)) {
       setIsSubmit(true);
       dispatch(userActions.updateProfile({...formValues,userEmail}));  
-      
-    } else {
-      
+      setDisplayProfile(false);
+    } 
+    else {
       setIsSubmit(false);
     }
-   
     
   };
-
+  
+  const display = () => {
+      setDisplayProfile(!displayProfile);
+  }
 
 
   const handleChange = (e:(ChangeEvent|SelectChangeEvent)) => {
@@ -296,9 +303,15 @@ const Profile = () => {
       setFormValues((prev) => ({ ...prev, [name]: value }));
     }
   };
-  return (
 
-        <Box component = 'div' className={classes.formBg}>
+  return (
+      <>
+        {  
+            !displayProfile &&    
+           <ProfileDisplay display={display} data={formValues}/>
+        }
+        {
+            displayProfile && (<Box component = 'div' className={classes.formBg}>
 
             <form onSubmit={handleSubmit}>
 
@@ -557,8 +570,10 @@ const Profile = () => {
             </Grid>
             <Button variant='contained' type='submit'  size='small' sx={{borderRadius: '22px', padding: '8px 15px'}}><Typography className={classes.save}>Save Profile</Typography></Button>
             </form>
-        </Box>
-  
+        </Box>)
+        }
+        
+    </>
   )
 }
 
