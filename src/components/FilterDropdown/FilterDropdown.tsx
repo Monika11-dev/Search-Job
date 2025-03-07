@@ -27,7 +27,7 @@ const FilterDropdown = (props:Props) => {
       const newLocations = event.target.value
       props.onFilterChange({ location: [newLocations], category: [catValue] });
     };
-    console.log(catValue,locValue);
+   
   return (
       <>
         <FormControl variant="standard" sx={{ m: 1, minWidth: 150}} className={classes.inputBackground}>

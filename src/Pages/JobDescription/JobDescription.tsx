@@ -15,15 +15,23 @@ import { useAppSelector} from "../../Store/Store";
 import { useEffect } from "react";
 
 const JobDescription = () => {
-    const location = useLocation()
-    const { description, qualifications, address, title, salary, opening, id, company, employment } = location.state;
-    const qualification = JSON.parse(qualifications);
-    const isDesktopValue = useMediaQuery(theme.breakpoints.up(1024));
-    const userEmail : string = useAppSelector(state => state.userAuth.currentEmail);
-    const currentUser : string = useAppSelector(state => state.userAuth.currentUser);
+    const location = useLocation();
     const classes = useStyle();
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    
+    // Data from previous page
+
+    const { description, qualifications, address, title, salary, opening, id, company, employment } = location.state;
+    const qualification = JSON.parse(qualifications);
+
+    const isDesktopValue = useMediaQuery(theme.breakpoints.up(1024));
+    
+    // Data from redux
+    const userEmail : string = useAppSelector(state => state.userAuth.currentEmail);
+    const currentUser : string = useAppSelector(state => state.userAuth.currentUser);
+
+    // handles apply jobs
 
     const handleApply = () => {
          dispatch(jobsActions.applyJobs({id,userEmail})); 
@@ -85,6 +93,7 @@ const JobDescription = () => {
                     ))
                   }
                   </List>
+                  {/* display when screen is of tablet size */}
                   {(!isDesktopValue) && (
                     <>
                      <Typography className={classes.descriptionHeading}>Address</Typography>
@@ -100,6 +109,7 @@ const JobDescription = () => {
               </Box>  
            </Box>
         </Grid> 
+        {/* displays for desktop size */}
         {isDesktopValue && (<Grid item sm={12} md={3} lg={3} className={classes.colTwo}>
            <Box component='div'>
                 <Grid container direction= 'column' sx={{marginBottom: '35px'}}>

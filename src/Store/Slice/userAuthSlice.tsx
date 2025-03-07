@@ -67,7 +67,6 @@ export const userAuthSlice = createSlice({
       }
 
       state.existingUser = [...state.existingUser, newUser];
-      console.log(state.existingUser);
       localStorage.setItem("SearchJobuser", JSON.stringify(state.existingUser));
       localStorage.setItem("currentSearchJobUser",JSON.stringify(newUser.username));
       localStorage.setItem("currentSearchJobEmail",JSON.stringify(newUser.email));

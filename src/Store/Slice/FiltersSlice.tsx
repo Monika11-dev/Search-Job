@@ -25,8 +25,6 @@ export const FiltersSlice = createSlice({
             localStorage.setItem("location", JSON.stringify(data.locData));
             state.loc = [...state.loc, data.locData];
         }
-        console.log(state.cats);
-      
     },
     
   },

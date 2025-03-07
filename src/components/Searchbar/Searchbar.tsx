@@ -1,15 +1,15 @@
 import React from 'react';
 import { makeStyles } from '@mui/styles';
 import { Theme } from '@mui/material';
-import {Box,  Button, Typography} from '@mui/material';
+import {Box} from '@mui/material';
 import { Search } from "@mui/icons-material";
 import {LocationOn} from "@mui/icons-material";
 import { useState } from 'react';
 
 interface Props{
     onFilterChange: (filters: {
-      location: string[];
-      category: string[];
+      location: string;
+      category: string;
     }) => void;
   }
 
@@ -72,17 +72,18 @@ const Searchbar = (props:Props) => {
     const [catValue, setCatValue] = useState('');
     const [locValue, setLocValue] = useState('');
     const handleCatChange = (event:React.FormEvent) => {
+          const category = (event.target as HTMLInputElement).value;
           setCatValue((event.target as HTMLInputElement).value)
+          props.onFilterChange({ location: locValue, category: category });
         };
-        const handleLocChange = (event:React.FormEvent) => {
-          setLocValue((event.target as HTMLInputElement).value);
-        };
-        console.log(catValue);
-        console.log(locValue);
-        const searchJob = () => {
-            props.onFilterChange({ location: [locValue], category: [catValue] });
-        }
+    const handleLocChange = (event:React.FormEvent) => {
+      const location = (event.target as HTMLInputElement).value;
+      setLocValue((event.target as HTMLInputElement).value);
+      props.onFilterChange({ location: location , category: catValue });
+    };
+
     const classes = useStyle();
+
     return (
         <Box className={classes.locationBox}>
           <Box className={classes.outerbox}>
@@ -94,13 +95,7 @@ const Searchbar = (props:Props) => {
                <LocationOn/>
                <input type='text' placeholder='Location' value={locValue} onChange={handleLocChange}/>
              </Box>
-             <Box>
-               <Button variant="contained" className={classes.findBtn} disableElevation onClick={searchJob}>
-                 <Typography className={classes.btnTxt} variant='body1'>Find Job</Typography>
-                </Button>
-             </Box>
-          </Box>
-          
+          </Box>       
         </Box>
   )
 }

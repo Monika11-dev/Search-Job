@@ -29,7 +29,7 @@ const AppliedJobs = (props:Props) => {
   return (
    <>
          {filteredJobs.slice((props.page-1) * props.rowsPerPage, ((props.page-1) * props.rowsPerPage) + props.rowsPerPage).map((item:Job) => (
-            <Grid container columnSpacing={{lg:1}}>
+            <Grid container columnSpacing={{lg:1}} key={item.id}>
                <Grid item xs={1}>
                   <img  src={img1} className={classes.companyLogo}/>
                </Grid>

@@ -35,15 +35,20 @@ export const Sidebar : React.FC = () => {
         }
     },[selectedIndex,navigate])
 
+    // handles active page 
+
     const handleListItemClick = (e:React.FormEvent, index:number) => {
-        console.log(e);
         setSelectedIndex(index);
     };
+
+    // handles Logout function
 
     const handleLogout = () => {
         dispatch(userActions.logoutUser());
         navigate('/Login');
     };
+
+    // handles logout confirmation popup
 
     const handleClose = () => {
         setLogout(false);

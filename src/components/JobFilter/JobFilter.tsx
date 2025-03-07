@@ -16,6 +16,7 @@ const JobFilter = (props:Props) => {
 
   const [selectedLocation, setSelectedLocation] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
+  
   const handleLocationChange = (event: React.ChangeEvent, location: string) => {
     const newLocations = (event.target as HTMLInputElement).checked ? [...selectedLocation, location]
       : selectedLocation.filter((item) => item !== location);

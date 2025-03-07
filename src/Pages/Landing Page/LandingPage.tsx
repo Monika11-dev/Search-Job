@@ -9,62 +9,75 @@ import { filterActions } from "../../Store/Slice/FiltersSlice";
 import Data from "../../Database/Data";
 import { useAppSelector } from "../../Store/Store";
 
+interface inputData {
+  target : {
+   name : string;
+   value : string;
+  } ;
+}
+
+interface stringObject {
+  username : string ,
+  email:string,
+  password:string,
+}
+
+interface Job {
+  title: string;
+  location:string;
+  company:string;
+  employment_type: string;
+  created_at: string;
+  id:string,
+  description:string,
+  qualifications:string,
+  salary_from : number,
+  salary_to: number,
+  number_of_opening: number,
+}
+
 const LandingPage = () => {
 
-  interface inputData {
-    target : {
-     name : string;
-     value : string;
-    } ;
-  }
+  const classes = useStyle();
+  const url = 'https://jsonfakery.com/jobs'; 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  interface stringObject {
-    username : string ,
-    email:string,
-    password:string,
-  }
-
-  interface Job {
-    title: string;
-    location:string;
-    company:string;
-    employment_type: string;
-    created_at: string;
-    id:string,
-    description:string,
-    qualifications:string,
-    salary_from : number,
-    salary_to: number,
-    number_of_opening: number,
-  }
+  // Data from redux
+  const currentUser : string = useAppSelector(state => state.userAuth.currentUser);
 
   const userObject = {     
     username : '',
     email : '',
     password:'',     
   };
- 
-  const classes = useStyle();
-  const url = 'https://jsonfakery.com/jobs'; 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const currentUser : string = useAppSelector(state => state.userAuth.currentUser);
+
   const [isSignup, setSignup] = useState(false);
   const [validateErrors, setValidateErrors] = useState(userObject);
   const [formValues, setFormValues] = useState(userObject);
   const [isSubmit,setIsSubmit] = useState(false);
   
   useEffect(()=>{     
-    Data(url).then((data)=>{   
+    Data(url)
+    .then(
+      (data)=>{   
           Filter(data);
-        })
-    .catch((err)=>console.log(err)).finally(()=>console.log('submitted'));
+        }
+    )
+    .catch(
+      (err)=>console.log(err)
+    )
+    .finally(
+      ()=>console.log('submitted')
+    );
     if (currentUser) {
       navigate("/");
     } else {
       navigate("/Login");
     }
-  },[]);
+  },[url]);
+
+  // fetch categories and locations from api
 
   const Filter = (data:Job[]) => {
 
@@ -81,11 +94,15 @@ const LandingPage = () => {
 
       dispatch(filterActions.setFilter({catData,locData}));         
   }
+
+  // handles changes in form data
      
   const handleChange = (e:inputData) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
   };
+
+  // handle form submission
   
   const handleSubmit = (e:React.FormEvent) => {
 
@@ -119,6 +136,8 @@ const LandingPage = () => {
         setIsSubmit(false);
       }
    }
+
+   // form validation function
 
    const validate = (values:stringObject) => {
     
@@ -171,6 +190,9 @@ const LandingPage = () => {
               </Box>
               <Box component='div'>
                 <Button onClick={()=>setSignup(!isSignup)}>
+
+                {/* display login button by default  */}
+
                 {isSignup ? (<Typography className={classes.login}>Log In</Typography>) : (
                   <Typography  className={classes.signup}>Sign up</Typography>
                 )}
