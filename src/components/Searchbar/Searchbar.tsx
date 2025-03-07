@@ -24,29 +24,36 @@ const useStyle = makeStyles<Theme>((theme)=>({
         alignItems: 'center',
         backgroundColor: 'white',
         borderRadius: 60,
-        padding: '4px 4px 4px 20px',
+        padding: '8px 20px 8px 20px',
+        transition: 'width 1s',
     },
     box: {
         display: 'flex',
         alignItems: 'center',
         gap: 10, 
+        width:'50%',
         '& svg': {
             height: 15,
             width: 15,
             color: '#4884ED',
-            // strokeWidth:1,
-            // stroke: '#1976d2',
         },
         '& input': {
             border: 'none',
             fontFamily: 'Mulish',
             fontSize: 13,
             fontWeight: 500,
+            width:'100%',
+            pointerEvents: 'auto',
             '&::placeholder': {
               color: '#4884ED',  
             },
             '&:focus-visible':{
                 outline: 'none',
+            },
+            '&:focus':{
+               
+              width:'100%',
+                 
             },
             [theme.breakpoints.down(1200)]: {
                 fontSize: '11px',
@@ -71,11 +78,20 @@ const useStyle = makeStyles<Theme>((theme)=>({
 const Searchbar = (props:Props) => {
     const [catValue, setCatValue] = useState('');
     const [locValue, setLocValue] = useState('');
+    const [isFocused, setIsFocused] = useState(false);
+
+    const handleFocus = () => {
+      setIsFocused(true);
+    };
+
+    // Passes search query to parent component
+
     const handleCatChange = (event:React.FormEvent) => {
           const category = (event.target as HTMLInputElement).value;
           setCatValue((event.target as HTMLInputElement).value)
           props.onFilterChange({ location: locValue, category: category });
         };
+
     const handleLocChange = (event:React.FormEvent) => {
       const location = (event.target as HTMLInputElement).value;
       setLocValue((event.target as HTMLInputElement).value);
@@ -86,14 +102,14 @@ const Searchbar = (props:Props) => {
 
     return (
         <Box className={classes.locationBox}>
-          <Box className={classes.outerbox}>
+          <Box className={classes.outerbox} style={{ width : isFocused ? '100%' : '40%' }}>
              <Box className={classes.box}>
                <Search />
-               <input type='text' placeholder='Job Title' value={catValue} onChange={handleCatChange}/>
+               <input type='text' placeholder='Job Title' value={catValue} onFocus={handleFocus} onChange={handleCatChange}/>
              </Box>
              <Box className={classes.box}>
                <LocationOn/>
-               <input type='text' placeholder='Location' value={locValue} onChange={handleLocChange}/>
+               <input type='text' placeholder='Location' value={locValue} onFocus={handleFocus} onChange={handleLocChange}/>
              </Box>
           </Box>       
         </Box>

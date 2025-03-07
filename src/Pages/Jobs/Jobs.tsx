@@ -1,4 +1,4 @@
-import { Box, Grid,useMediaQuery,Pagination } from '@mui/material';
+import { Box, Grid,useMediaQuery,Pagination, Alert } from '@mui/material';
 import Subheading from '../../components/Subheading/Subheading';
 import theme from '../../Theme/theme';
 import useStyle from './Jobs.css';
@@ -143,6 +143,11 @@ const Jobs = () => {
                         )
                   }  
                   {/* Shows All jobs by default */}
+                  {
+                     ((searchFilters.location.length > 0 || searchFilters.category.length > 0) && (searchedJobs.length === 0) && 
+                       <Alert severity="info" sx={{my : '10px'}}> No Search Results .</Alert>
+                     )
+                  }
                   {
                      (searchedJobs.length === 0 && filteredJobs.length === 0) &&  <>     
                               <ApplyJobs jobs={jobs} page={page} rowsPerPage={5}/>

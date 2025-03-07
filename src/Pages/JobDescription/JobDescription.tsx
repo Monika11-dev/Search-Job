@@ -60,7 +60,7 @@ const JobDescription = () => {
                         <Grid item>  
                             <Grid container>
                                 <Grid item xs={4}><Typography className={classes.company}>{company}</Typography></Grid>
-                                <Grid item xs={4}><Typography className={classes.jobDetails}><LocationOnIcon sx={{height: 15, width: 15, color: '#7A7A7A'}}/>Noida</Typography></Grid>
+                                <Grid item xs={4}><Typography className={classes.jobDetails}><LocationOnIcon sx={{height: 15, width: 15, color: '#7A7A7A'}}/>{address}</Typography></Grid>
                                 <Grid item xs={3}><Typography className={classes.jobDetails}>{employment}</Typography></Grid>
                                 {/* <Grid item xs={2}><Typography className={classes.jobDetails}>view details</Typography></Grid> */}
                             </Grid>

@@ -1,6 +1,6 @@
 
 import useStyle from './Dashboard.css';
-import { Grid, Box, Tab, Pagination, useMediaQuery } from '@mui/material';
+import { Grid, Box, Tab, Pagination, useMediaQuery, Alert } from '@mui/material';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import Subheading from '../../components/Subheading/Subheading';
 import { useState,useEffect } from 'react';
@@ -180,6 +180,12 @@ const Dashboard = () => {
               {
                 filteredJobs.length > 0 && 
                 (<ApplyJobs jobs={filteredJobs} page={page} rowsPerPage={5}/>)
+              }
+
+              {
+                ((searchFilters.location.length > 0 || searchFilters.category.length > 0) && (searchedJobs.length === 0) && 
+                  <Alert severity="info" sx={{my : '10px'}}> No Search Results .</Alert>
+                )
               }
 
               {/* displays applied jobs  */}

@@ -8,6 +8,7 @@ const useStyle = makeStyles<Theme>((theme)=>({
        fontWeight: '600 !important',
        color: theme.palette.secondary.main,
        marginTop: '5px !important',
+       marginBottom: '20px !important',
     }
 }));
 
