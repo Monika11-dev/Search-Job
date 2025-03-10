@@ -1,7 +1,6 @@
-
 export const Data = async (url:string) => {     
    const response =  await fetch(url);
    return await response.json();
 }
 
-export default Data
+export default Data;

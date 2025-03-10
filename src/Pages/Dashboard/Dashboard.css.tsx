@@ -3,7 +3,6 @@ import { Theme } from '@mui/material';
 
 const useStyle = makeStyles<Theme>((theme)=>({
    colOne: {
-
       [theme.breakpoints.down(1024)]: {
          flexBasis: '100% !important',
          maxWidth: '100% !important',
@@ -15,11 +14,9 @@ const useStyle = makeStyles<Theme>((theme)=>({
       [theme.breakpoints.up(1300)]: {
          flexBasis: '80% !important',
          maxWidth: '80% !important',
-      },
-      
+      },    
    },
-   colTwo: {
-     
+   colTwo: {     
       [theme.breakpoints.down(1024)]: {
          flexBasis: '100% !important',
          maxWidth: '100% !important',
@@ -78,8 +75,7 @@ const useStyle = makeStyles<Theme>((theme)=>({
    },
    dropdownBox: {
       display: 'flex',
-      justifyContent: 'flex-end',
-      
+      justifyContent: 'flex-end',    
   },
 }));
 
