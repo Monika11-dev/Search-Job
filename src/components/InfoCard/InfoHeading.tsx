@@ -1,9 +1,7 @@
 import { Typography } from "@mui/material";
+import { IFormHeading } from "../../type/type";
 
-interface Props {
-  heading: string;
-}
-const InfoHeading = (props: Props) => {
+const InfoHeading = (props: IFormHeading) => {
   
   return (
     <Typography

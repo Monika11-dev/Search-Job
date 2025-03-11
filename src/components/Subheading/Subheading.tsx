@@ -1,5 +1,6 @@
 import { Typography, Theme } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import { IFormHeading } from "../../type/type";
 
 const useStyle = makeStyles<Theme>((theme) => ({
   subhead: {
@@ -11,11 +12,7 @@ const useStyle = makeStyles<Theme>((theme) => ({
   },
 }));
 
-interface SubheadingProps {
-  heading: string;
-}
-
-const Subheading = (props: SubheadingProps) => {
+const Subheading = (props: IFormHeading) => {
   const classes = useStyle();
   
   return (

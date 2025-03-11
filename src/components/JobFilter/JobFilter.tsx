@@ -1,14 +1,9 @@
 import { Grid, Typography, List, ListItem, FormGroup, FormControlLabel, Checkbox } from "@mui/material";
 import { useState } from "react";
 import useStyle from "./JobFilter.css";
+import { IFilter } from "../../type/type";
 
-interface Props {
-  category: string[];
-  location: string[];
-  onFilterChange: (filters: { location: string[]; category: string[] }) => void;
-}
-
-const JobFilter = (props: Props) => {
+const JobFilter = (props: IFilter) => {
   const classes = useStyle();
   const [selectedLocation, setSelectedLocation] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string[]>([]);

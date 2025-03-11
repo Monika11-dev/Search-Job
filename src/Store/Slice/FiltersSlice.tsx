@@ -1,12 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import type { PayloadAction } from '@reduxjs/toolkit'
+import { IFilters } from "../../type/type";
 
-interface Filters {
-  cats: string[];
-  loc: string[];
-}
-
-const initialState: Filters = {
+const initialState: IFilters = {
   cats: JSON.parse(localStorage.getItem("category") as string) || [],
   loc: JSON.parse(localStorage.getItem("location") as string) || [],
 };

@@ -8,33 +8,7 @@ import { userActions } from "../../Store/Slice/userAuthSlice";
 import { filterActions } from "../../Store/Slice/FiltersSlice";
 import Data from "../../Database/Data";
 import { useAppSelector } from "../../Store/Store";
-
-interface inputData {
-  target: {
-    name: string;
-    value: string;
-  };
-}
-
-interface stringObject {
-  username: string;
-  email: string;
-  password: string;
-}
-
-interface Job {
-  title: string;
-  location: string;
-  company: string;
-  employment_type: string;
-  created_at: string;
-  id: string;
-  description: string;
-  qualifications: string;
-  salary_from: number;
-  salary_to: number;
-  number_of_opening: number;
-}
+import { IJob, IUserDetail, IInputData } from "../../type/type";
 
 const LandingPage = () => {
   const classes = useStyle();
@@ -73,11 +47,11 @@ const LandingPage = () => {
   }, [url]);
 
   // fetch categories and locations from api
-  const Filter = (data: Job[]) => {
-    const allCat = data.map((item: Job) => {
+  const Filter = (data: IJob[]) => {
+    const allCat = data.map((item: IJob) => {
       return item.employment_type;
     });
-    const allLoc = data.map((item: Job) => {
+    const allLoc = data.map((item: IJob) => {
       return item.location;
     });
     const myCat = [...new Set(allCat)];
@@ -89,7 +63,7 @@ const LandingPage = () => {
   };
 
   // handles changes in form data
-  const handleChange = (e: inputData) => {
+  const handleChange = (e: IInputData) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
   };
@@ -99,7 +73,7 @@ const LandingPage = () => {
     e.preventDefault();
     const errors = validate(formValues);
     setValidateErrors(errors);
-    setIsSubmit(true);
+    setIsSubmit(!isSubmit);
     if (
       errors.username === "" &&
       errors.email === "" &&
@@ -130,8 +104,8 @@ const LandingPage = () => {
   };
 
   // form validation function
-  const validate = (values: stringObject) => {
-    const errors: stringObject = { username: "", email: "", password: "" };
+  const validate = (values: IUserDetail) => {
+    const errors: IUserDetail = { username: "", email: "", password: "" };
     const regexUsername = /^[A-Za-z\s]+$/;
     const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const regexPassword = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&+=!]).{8,}$/;

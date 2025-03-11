@@ -1,12 +1,5 @@
 import useStyle from "./Dashboard.css";
-import {
-  Grid,
-  Box,
-  Tab,
-  Pagination,
-  useMediaQuery,
-  Alert,
-} from "@mui/material";
+import { Grid, Box, Tab, Pagination, useMediaQuery, Alert } from "@mui/material";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import Subheading from "../../components/Subheading/Subheading";
 import { useState, useEffect } from "react";
@@ -19,25 +12,7 @@ import Data from "../../Database/Data";
 import ApplyJobs from "../../components/AppliedJobs/ApplyJobs";
 import Searchbar from "../../components/Searchbar/Searchbar";
 import { useNavigate } from "react-router-dom";
-
-interface Job {
-  title: string;
-  location: string;
-  company: string;
-  employment_type: string;
-  created_at: string;
-  id: string;
-  description: string;
-  qualifications: string;
-  salary_from: number;
-  salary_to: number;
-  number_of_opening: number;
-}
-
-interface idObj {
-  id: string;
-  userEmail: string;
-}
+import { IJob, IUserId } from "../../type/type";
 
 const Dashboard = () => {
   const classes = useStyle();
@@ -49,7 +24,7 @@ const Dashboard = () => {
   // Data from redux
   const category: string[] = useAppSelector((state) => state.jobsFilter.cats);
   const location: string[] = useAppSelector((state) => state.jobsFilter.loc);
-  const appliedJobsData: idObj[] = useAppSelector(
+  const appliedJobsData: IUserId[] = useAppSelector(
     (state) => state.userJobs.jobs
   );
   const userEmail: string = useAppSelector(
@@ -103,7 +78,7 @@ const Dashboard = () => {
   };
 
   // gives filters results
-  const filteredJobs = jobs.filter((job: Job) => {
+  const filteredJobs = jobs.filter((job: IJob) => {
     const isLocationMatch =
       filters.location.length > 0
         ? filters.location.includes(job.location)
@@ -121,7 +96,7 @@ const Dashboard = () => {
   });
 
   // gives search results
-  const searchedJobs = jobs.filter((job: Job) => {
+  const searchedJobs = jobs.filter((job: IJob) => {
     const isLocationMatch =
       searchFilters.location !== ""
         ? job.location

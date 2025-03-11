@@ -5,10 +5,7 @@ import { Box } from "@mui/material";
 import { Search } from "@mui/icons-material";
 import { LocationOn } from "@mui/icons-material";
 import { useState } from "react";
-
-interface Props {
-  onFilterChange: (filters: { location: string; category: string }) => void;
-}
+import { ISearch } from "../../type/type";
 
 const useStyle = makeStyles<Theme>((theme) => ({
   locationBox: {
@@ -70,7 +67,7 @@ const useStyle = makeStyles<Theme>((theme) => ({
   },
 }));
 
-const Searchbar = (props: Props) => {
+const Searchbar = (props: ISearch) => {
   const classes = useStyle();
   const [catValue, setCatValue] = useState("");
   const [locValue, setLocValue] = useState("");

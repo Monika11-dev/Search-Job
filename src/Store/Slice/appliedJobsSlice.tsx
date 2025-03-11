@@ -1,15 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { IAppliedJobs } from "../../type/type";
 
-interface idObj {
-  id: string;
-  userEmail: string;
-}
-
-interface AppliedJobs {
-  jobs: idObj[];
-}
-
-const initialState: AppliedJobs = {
+const initialState: IAppliedJobs = {
   jobs: JSON.parse(localStorage.getItem("ApppliedJobs") as string) || [],
 };
 

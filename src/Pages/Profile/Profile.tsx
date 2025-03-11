@@ -9,38 +9,13 @@ import { userActions } from "../../Store/Slice/userAuthSlice";
 import { useAppSelector } from "../../Store/Store";
 import { useNavigate } from "react-router-dom";
 import ProfileDisplay from "../../components/ShowProfile/ProfileDisplay";
+import { IErrors } from "../../type/type";
 
-const countryStateMap = {
+const countryStateMap : Record<"USA" | "Canada" | "India", string[]> = {
   USA: ["California", "Texas", "New York"],
   Canada: ["Ontario", "Quebec", "British Columbia"],
   India: ["Delhi", "Maharashtra", "Karnataka"],
 };
-
-interface errors {
-  firstname: string;
-  lastname: string;
-  title: string;
-  languages: string;
-  current: string;
-  expected: string;
-  message: string;
-  mobile: string;
-  email: string;
-  country: string;
-  state: string;
-  pincode: string;
-  street: string;
-  degree: string;
-  university: string;
-  grade: string;
-  year: string;
-  designation: string;
-  employment: string;
-  company: string;
-  location: string;
-  skill1: string;
-  skill2: string;
-}
 
 const Profile = () => {
   const classes = useStyle();
@@ -119,7 +94,7 @@ const Profile = () => {
       navigate("/Login");
     }
     const emailExists = Profile.find(
-      (user: errors) => user.email === userEmail
+      (user: IErrors) => user.email === userEmail
     );
     console.log(emailExists);
     if (emailExists) {
@@ -153,7 +128,7 @@ const Profile = () => {
   }, []);
 
   const validateForm = () => {
-    const newErrors: errors = Error;
+    const newErrors: IErrors = Error;
     const regexUsername = /^[A-Za-z\s]+$/;
     const numberonly = /^[0-9]+$/;
     // const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -255,12 +230,12 @@ const Profile = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     const errors = validateForm();
-    setIsSubmit(true);
-    const areErrorsEmpty = (errors: errors) => {
+    setIsSubmit(!isSubmit);
+    const areErrorsEmpty = (errors: IErrors) => {
       return Object.values(errors).every((value) => value === "");
     };
     if (areErrorsEmpty(errors)) {
-      setIsSubmit(true);
+      setIsSubmit(!isSubmit);
       dispatch(userActions.updateProfile({ ...formValues, userEmail }));
       setDisplayProfile(false);
     } else {
@@ -274,11 +249,12 @@ const Profile = () => {
 
   const handleChange = (e: ChangeEvent | SelectChangeEvent) => {
     const { name, value } = e.target as HTMLInputElement;
+    console.log(value);
     if (name === "country") {
       setFormValues((prev) => ({ ...prev, country: value, state: "" }));
-      setStates(countryStateMap[value] || []);
+      setStates(countryStateMap[value as keyof typeof countryStateMap] || []);
     } else {
-      setFormValues((prev) => ({ ...prev, [name]: value }));
+       setFormValues((prev) => ({ ...prev, [name]: value }));
     }
   };
 
@@ -358,7 +334,7 @@ const Profile = () => {
                     value={formValues.languages}
                     onChange={handleChange}
                   >
-                    <MenuItem value="None">Select country</MenuItem>
+                    <MenuItem value="None">Select Languages</MenuItem>
                     <MenuItem value="English">English</MenuItem>
                     <MenuItem value="Hindi">Hindi</MenuItem>
                   </Select>
@@ -503,13 +479,14 @@ const Profile = () => {
                     value={formValues.state}
                     onChange={handleChange}
                   >
-                    {" "}
+                    
                     <MenuItem value="None">Select State</MenuItem>
-                    {states.map((state) => (
+                    {(states.length > 0) && states.map((state:string) => (
                       <MenuItem key={state} value={state}>
                         {state}
                       </MenuItem>
                     ))}
+                    
                   </Select>
                   {errors.state && (
                     <FormHelperText

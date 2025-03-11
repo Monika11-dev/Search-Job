@@ -2,30 +2,11 @@ import { Grid, Typography } from "@mui/material";
 import img1 from "../../assets/Images/Tata-Logo-1988.png";
 import useStyle from "./AppliedJobs.css";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { IJob, IApplied } from "../../type/type";
 
-interface Props {
-  jobs: Job[];
-  myJobs: string[];
-  page: number;
-  rowsPerPage: number;
-}
-interface Job {
-  title: string;
-  location: string;
-  company: string;
-  employment_type: string;
-  created_at: string;
-  id: string;
-  description: string;
-  qualifications: string;
-  salary_from: number;
-  salary_to: number;
-  number_of_opening: number;
-}
-
-const AppliedJobs = (props: Props) => {
+const AppliedJobs = (props: IApplied) => {
   const classes = useStyle();
-  const filteredJobs = props.jobs.filter((item: Job) =>
+  const filteredJobs = props.jobs.filter((item: IJob) =>
     props.myJobs.includes(item.id)
   );
 
@@ -35,7 +16,7 @@ const AppliedJobs = (props: Props) => {
           (props.page - 1) * props.rowsPerPage,
           (props.page - 1) * props.rowsPerPage + props.rowsPerPage
         )
-        .map((item: Job) => (
+        .map((item: IJob) => (
           <Grid container columnSpacing={{ lg: 1 }} key={item.id}>
             <Grid item xs={1}>
               <img src={img1} className={classes.companyLogo} />
@@ -50,7 +31,7 @@ const AppliedJobs = (props: Props) => {
                 <Grid item>
                   <Grid container>
                     <Grid item xs={4}>
-                      <Typography className={classes.company}>
+                      <Typography component="h2" className={classes.company}>
                         {item.company}{" "}
                       </Typography>
                     </Grid>

@@ -3,27 +3,9 @@ import img1 from "../../assets/Images/Tata-Logo-1988.png";
 import useStyle from "./AppliedJobs.css";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { Link } from "react-router-dom";
+import {IApply } from "../../type/type";
 
-interface Job {
-  title: string;
-  location: string;
-  company: string;
-  employment_type: string;
-  created_at: string;
-  id: string;
-  description: string;
-  qualifications: string;
-  salary_from: number;
-  number_of_opening: number;
-}
-
-interface Props {
-  jobs: Job[];
-  page: number;
-  rowsPerPage: number;
-}
-
-const ApplyJobs = (props: Props) => {
+const ApplyJobs = (props: IApply) => {
   const classes = useStyle();
 
   return (
@@ -53,7 +35,7 @@ const ApplyJobs = (props: Props) => {
                 <Grid item>
                   <Grid container>
                     <Grid item xs={4}>
-                      <Typography className={classes.company}>
+                      <Typography variant="h3" component="h3" className={classes.company}>
                         {item.company}
                       </Typography>
                     </Grid>

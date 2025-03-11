@@ -1,6 +1,7 @@
 import { Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { Theme } from "@mui/material";
+import { IFormLabel } from "../../type/type";
 
 const useStyle = makeStyles<Theme>((theme) => ({
   Label: {
@@ -13,11 +14,7 @@ const useStyle = makeStyles<Theme>((theme) => ({
   },
 }));
 
-interface Props {
-  label: string;
-}
-
-const Formlabel = (props: Props) => {
+const Formlabel = (props: IFormLabel) => {
   const classes = useStyle();
   
   return <Typography className={classes.Label}>{props.label}</Typography>;

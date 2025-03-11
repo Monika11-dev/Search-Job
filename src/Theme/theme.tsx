@@ -1,7 +1,7 @@
 import { createTheme } from "@mui/material";
 
 // changine theme
-export const theme = createTheme({
+ const theme = createTheme({
   palette: {
     primary: {
       main: "#4884ED",

@@ -1,14 +1,4 @@
-import {
-  Box,
-  Grid,
-  Typography,
-  Button,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
-  useMediaQuery,
-} from "@mui/material";
+import { Box, Grid, Typography, Button, List, ListItem, ListItemText, ListItemIcon, useMediaQuery } from "@mui/material";
 import useStyle from "./JobDescription.css";
 import img1 from "../../assets/Images/Tata-Logo-1988.png";
 import LocationOnIcon from "@mui/icons-material/LocationOn";

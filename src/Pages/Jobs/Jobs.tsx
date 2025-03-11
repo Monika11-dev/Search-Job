@@ -10,20 +10,7 @@ import { useAppSelector } from "../../Store/Store";
 import { Data } from "../../Database/Data";
 import Searchbar from "../../components/Searchbar/Searchbar";
 import { useNavigate } from "react-router-dom";
-
-interface Job {
-  title: string;
-  location: string;
-  company: string;
-  employment_type: string;
-  created_at: string;
-  id: string;
-  description: string;
-  qualifications: string;
-  salary_from: number;
-  salary_to: number;
-  number_of_opening: number;
-}
+import { IJob } from "../../type/type";
 
 const Jobs = () => {
   const classes = useStyle();
@@ -88,7 +75,7 @@ const Jobs = () => {
 
   // Filtered Jobs
 
-  const filteredJobs = jobs.filter((job: Job) => {
+  const filteredJobs = jobs.filter((job: IJob) => {
     const isLocationMatch =
       filters.location.length > 0
         ? filters.location.includes(job.location)
@@ -106,7 +93,7 @@ const Jobs = () => {
 
   // searhced Jobs
 
-  const searchedJobs = jobs.filter((job: Job) => {
+  const searchedJobs = jobs.filter((job: IJob) => {
     const isLocationMatch =
       searchFilters.location !== ""
         ? job.location

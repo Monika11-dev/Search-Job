@@ -1,45 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { IExistingUserState, IUserDetail, IErrors } from "../../type/type";
 
-interface stringObject {
-  username: string;
-  email: string;
-  password?: string;
-}
-
-interface Profile {
-  firstname: string;
-  lastname: string;
-  title: string;
-  languages: string;
-  current: string;
-  expected: string;
-  message: string;
-  mobile: string;
-  email: string;
-  country: string;
-  state: string;
-  pincode: string;
-  street: string;
-  degree: string;
-  university: string;
-  grade: string;
-  year: string;
-  designation: string;
-  employment: string;
-  company: string;
-  location: string;
-  skill1: string;
-  skill2: string;
-}
-
-interface ExistingUserState {
-  existingUser: stringObject[];
-  existingProfile: Profile[];
-  currentUser: string;
-  currentEmail: string;
-}
-
-const initialState: ExistingUserState = {
+const initialState: IExistingUserState = {
   existingUser: JSON.parse(localStorage.getItem("SearchJobuser") as string) || [],
   existingProfile: JSON.parse(localStorage.getItem("SearchJobProfile") as string) || [],
   currentUser: JSON.parse(localStorage.getItem("currentSearchJobUser") as string) || "",
@@ -51,9 +13,9 @@ export const userAuthSlice = createSlice({
   initialState,
   reducers: {
     registerUser(state, action) {
-      const newUser: stringObject = action.payload;
+      const newUser: IUserDetail = action.payload;
       const emailExists = state.existingUser.find(
-        (user: stringObject) => user.email === newUser.email
+        (user: IUserDetail) => user.email === newUser.email
       );
       if (emailExists) {
         alert("Email already exist");
@@ -75,9 +37,9 @@ export const userAuthSlice = createSlice({
     },
 
     loginUser(state, action) {
-      const loginUser: stringObject = action.payload;
+      const loginUser: IUserDetail = action.payload;
       const user = state.existingUser.find(
-        (user: stringObject) =>
+        (user: IUserDetail) =>
           user.email === loginUser.email && user.password === loginUser.password
       );
       if (user) {
@@ -105,9 +67,9 @@ export const userAuthSlice = createSlice({
 
     updateProfile(state, action) {
       const userProfile = action.payload;
-      const emailExists = state.existingProfile.find((user: Profile) => user.email === userProfile.email );
+      const emailExists = state.existingProfile.find((user: IErrors) => user.email === userProfile.email );
       if (emailExists) {
-        const updatedProfile = state.existingProfile.map((item: Profile) =>
+        const updatedProfile = state.existingProfile.map((item: IErrors) =>
           item.email === userProfile.email
             ? {
                 ...item,

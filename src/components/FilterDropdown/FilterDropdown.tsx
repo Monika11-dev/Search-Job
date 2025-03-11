@@ -2,12 +2,9 @@ import { FormControl, InputLabel, Select, MenuItem, SelectChangeEvent } from "@m
 import useStyle from "./FilterDropdown.css";
 import { useState } from "react";
 import { useAppSelector } from "../../Store/Store";
+import { IFilterDropdown } from "../../type/type";
 
-interface Props {
-  onFilterChange: (filters: { location: string[]; category: string[] }) => void;
-}
-
-const FilterDropdown = (props: Props) => {
+const FilterDropdown = (props: IFilterDropdown) => {
   const classes = useStyle();
   const [catValue, setCatValue] = useState("");
   const [locValue, setLocValue] = useState("");

@@ -3,39 +3,9 @@ import InfoHeading from "../InfoCard/InfoHeading";
 import useStyle from "./ProfileDisplay.css";
 import InfoSubheading from "../InfoCard/InfoSubheading";
 import EditIcon from "@mui/icons-material/Edit";
+import { IProfileDisplay } from "../../type/type";
 
-interface errors {
-  firstname: string;
-  lastname: string;
-  title: string;
-  languages: string;
-  current: string;
-  expected: string;
-  message: string;
-  mobile: string;
-  email: string;
-  country: string;
-  state: string;
-  pincode: string;
-  street: string;
-  degree: string;
-  university: string;
-  grade: string;
-  year: string;
-  designation: string;
-  employment: string;
-  company: string;
-  location: string;
-  skill1: string;
-  skill2: string;
-}
-
-interface Props {
-  display(): void;
-  data: errors;
-}
-
-const ProfileDisplay = (props: Props) => {
+const ProfileDisplay = (props: IProfileDisplay) => {
   const classes = useStyle();
   const editProfile = () => {
     props.display();

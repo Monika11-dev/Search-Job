@@ -10,6 +10,9 @@ import Jobs from "./Pages/Jobs/Jobs";
 import Profile from "./Pages/Profile/Profile";
 
 function App() {
+
+  console.log(theme);
+  
   return (
     <>
       <ThemeProvider theme={theme}>

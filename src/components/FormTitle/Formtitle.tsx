@@ -1,10 +1,7 @@
 import { makeStyles } from "@mui/styles";
 import { Typography, Divider } from "@mui/material";
 import { Theme } from "@mui/material";
-
-interface Props {
-  heading: string;
-}
+import { IFormHeading } from "../../type/type";
 
 const useStyle = makeStyles<Theme>((theme) => ({
   formHead: {
@@ -22,7 +19,7 @@ const useStyle = makeStyles<Theme>((theme) => ({
   },
 }));
 
-const Formtitle = (props: Props) => {
+const Formtitle = (props: IFormHeading) => {
   const classes = useStyle();
   
   return (
