@@ -11,13 +11,21 @@ const FilterDropdown = (props: IFilterDropdown) => {
 
   const category: string[] = useAppSelector((state) => state.jobsFilter.cats);
   const location: string[] = useAppSelector((state) => state.jobsFilter.loc);
-
+  
+  /**
+   * Handles the change event for selecting a category.
+   * @param {SelectChangeEvent} event - The event object triggered when the category selection changes.
+   */
   const handleCatChange = (event: SelectChangeEvent) => {
     setCatValue(event.target.value);
     const newCategories = event.target.value;
     props.onFilterChange({ location: [locValue], category: [newCategories] });
   };
-
+  
+  /**
+   * Handles the change event for selecting a location.
+   * @param {SelectChangeEvent} event - The event object triggered when the location selection changes.
+   */
   const handleLocChange = (event: SelectChangeEvent) => {
     setLocValue(event.target.value);
     const newLocations = event.target.value;

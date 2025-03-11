@@ -7,7 +7,12 @@ const JobFilter = (props: IFilter) => {
   const classes = useStyle();
   const [selectedLocation, setSelectedLocation] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
-
+  
+  /**
+   * Handles the change event for selecting or deselecting a location. 
+   * @param {React.ChangeEvent} event - The change event triggered when the location checkbox is toggled.
+   * @param {string} location - The location that was selected or deselected.
+   */
   const handleLocationChange = (event: React.ChangeEvent, location: string) => {
     const newLocations = (event.target as HTMLInputElement).checked
       ? [...selectedLocation, location]
@@ -18,7 +23,12 @@ const JobFilter = (props: IFilter) => {
       category: selectedCategory,
     });
   };
-
+  
+  /**
+   * Handles the change event for selecting or deselecting a category.
+   * @param {React.ChangeEvent} event - The change event triggered when the category checkbox is toggled.
+   * @param {string} category - The category that was selected or deselected.
+   */
   const handleCategoryChange = (event: React.ChangeEvent, category: string) => {
     const newCategories = (event.target as HTMLInputElement).checked
       ? [...selectedCategory, category]

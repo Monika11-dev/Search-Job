@@ -46,7 +46,10 @@ const LandingPage = () => {
     }
   }, [url]);
 
-  // fetch categories and locations from api
+  /**
+   * Fetch categories and locations from API
+   * @param {IJob[]} data - The list of job data objects containing employment type and location.
+   */
   const Filter = (data: IJob[]) => {
     const allCat = data.map((item: IJob) => {
       return item.employment_type;
@@ -62,13 +65,19 @@ const LandingPage = () => {
     dispatch(filterActions.setFilter({ catData, locData }));
   };
 
-  // handles changes in form data
+  /**
+   * Handles changes in form input data and updates the form state.
+   * @param {IInputData} e - The event object containing the form input's name and value.
+   */
   const handleChange = (e: IInputData) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
   };
 
-  // handle form submission
+  /**
+   * Handles form submission
+   * @param {React.FormEvent} e - The form submission event.
+   */
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const errors = validate(formValues);
@@ -103,7 +112,11 @@ const LandingPage = () => {
     }
   };
 
-  // form validation function
+  /**
+   * Validates the form data for user registration or login.
+   * @param {IUserDetail} values - The user form values (username, email, password).
+   * @returns {IUserDetail} errors - An object containing validation error messages for each field.
+   */
   const validate = (values: IUserDetail) => {
     const errors: IUserDetail = { username: "", email: "", password: "" };
     const regexUsername = /^[A-Za-z\s]+$/;

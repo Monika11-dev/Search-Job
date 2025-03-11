@@ -49,7 +49,11 @@ const Jobs = () => {
       .finally(() => console.log("submitted"));
   }, [navigate, currentUser]);
 
-  // handles pagination
+  /**
+   * Handles page change
+   * @param {React.ChangeEvent<unknown>} event - The event object triggered by the page change.
+   * @param {number} newPage - new page number.
+   */
   const handleChangePage = (
     event: React.ChangeEvent<unknown>,
     newPage: number
@@ -57,7 +61,10 @@ const Jobs = () => {
     setPage(newPage);
   };
 
-  // handles filter
+  /**
+   * Handles the filter change by updating the selected filters.
+   * @param {{ location: string[]; category: string[] }} newFilters - The new filter values to apply.
+   */
   const handleFilterChange = (newFilters: {
     location: string[];
     category: string[];
@@ -65,7 +72,10 @@ const Jobs = () => {
     setFilters(newFilters);
   };
 
-  // handles Searchbar
+  /**
+   * Handles changes in the search input fields.
+   * @param {{ location: string; category: string }} searchFilters - The new search filter values .
+   */
   const handleSearch = (searchFilters: {
     location: string;
     category: string;
@@ -73,8 +83,10 @@ const Jobs = () => {
     setSearchFilters(searchFilters);
   };
 
-  // Filtered Jobs
-
+  /**
+   * Filters the job listings based on the selected filters 
+   * @returns {IJob[]} - filtered array
+   */
   const filteredJobs = jobs.filter((job: IJob) => {
     const isLocationMatch =
       filters.location.length > 0
@@ -91,8 +103,10 @@ const Jobs = () => {
     }
   });
 
-  // searhced Jobs
-
+  /**
+   * Filters the job listings based on the search input values 
+   * @returns {IJob[]} - filtered array of jobs
+   */
   const searchedJobs = jobs.filter((job: IJob) => {
     const isLocationMatch =
       searchFilters.location !== ""

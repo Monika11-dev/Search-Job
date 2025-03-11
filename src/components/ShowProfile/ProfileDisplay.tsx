@@ -7,6 +7,10 @@ import { IProfileDisplay } from "../../type/type";
 
 const ProfileDisplay = (props: IProfileDisplay) => {
   const classes = useStyle();
+
+  /**
+   * Handles edit profile display section
+   */
   const editProfile = () => {
     props.display();
   };

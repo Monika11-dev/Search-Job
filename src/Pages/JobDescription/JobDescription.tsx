@@ -44,7 +44,10 @@ const JobDescription = () => {
     (state) => state.userAuth.currentUser
   );
 
-  // handles apply jobs
+  /**
+   * Handles job apply
+   * @returns {void} - This function does not return any value.
+   */
   const handleApply = () => {
     dispatch(jobsActions.applyJobs({ id, userEmail }));
     navigate("/");

@@ -33,7 +33,11 @@ export const Sidebar: React.FC = () => {
     }
   }, [selectedIndex, navigate]);
 
-  // handles active page
+  /**
+   * Handles active page by updating the selected index.
+   * @param {React.FormEvent} e - The form event triggered when a list item is clicked.
+   * @param {number} index - The index of the clicked list item, used to set the active page.
+   */
   const handleListItemClick = (e: React.FormEvent, index: number) => {
     setSelectedIndex(index);
   };

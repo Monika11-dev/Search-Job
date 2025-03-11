@@ -47,13 +47,22 @@ const Dashboard = () => {
   const [value, setValue] = useState("1");
   const [jobs, setJobs] = useState([]);
 
-  // handles tab value
+
+  /**
+   * Handles tab change
+   * @param {React.FormEvent} e - The form event triggered when the tab is clicked.
+   * @param {string} newValue - The new value of the selected tab.
+   */
   const handleChange = (e: React.FormEvent, newValue: string) => {
     e.preventDefault();
     setValue(newValue);
   };
 
-  // handles page change
+  /**
+   * Handles page change
+   * @param {React.ChangeEvent<unknown>} event - The event object triggered by the page change.
+   * @param {number} newPage - new page number.
+   */
   const handleChangePage = (
     event: React.ChangeEvent<unknown>,
     newPage: number
@@ -61,7 +70,10 @@ const Dashboard = () => {
     setPage(newPage);
   };
 
-  // handles filter change
+  /**
+   * Handles the filter change by updating the selected filters.
+   * @param {{ location: string[]; category: string[] }} newFilters - The new filter values to apply.
+   */
   const handleFilterChange = (newFilters: {
     location: string[];
     category: string[];
@@ -69,7 +81,10 @@ const Dashboard = () => {
     setFilters(newFilters);
   };
 
-  // handles search change
+  /**
+   * Handles changes in the search input fields.
+   * @param {{ location: string; category: string }} searchFilters - The new search filter values .
+   */
   const handleSearch = (searchFilters: {
     location: string;
     category: string;
@@ -77,7 +92,10 @@ const Dashboard = () => {
     setSearchFilters(searchFilters);
   };
 
-  // gives filters results
+  /**
+   * Filters the job listings based on the selected filters 
+   * @returns {IJob[]} - filtered array
+   */
   const filteredJobs = jobs.filter((job: IJob) => {
     const isLocationMatch =
       filters.location.length > 0
@@ -95,7 +113,10 @@ const Dashboard = () => {
     }
   });
 
-  // gives search results
+  /**
+   * Filters the job listings based on the search input values 
+   * @returns {IJob[]} - filtered array of jobs
+   */
   const searchedJobs = jobs.filter((job: IJob) => {
     const isLocationMatch =
       searchFilters.location !== ""

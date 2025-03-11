@@ -6,6 +6,12 @@ import { IJob, IApplied } from "../../type/type";
 
 const AppliedJobs = (props: IApplied) => {
   const classes = useStyle();
+  
+  /**
+   * Filters the list of jobs to include only those that match the user's "myJobs" list.
+   * @param {IJob[]} props.jobs - The list of all job objects.
+   * @returns {IJob[]} - filtered jobs
+   */
   const filteredJobs = props.jobs.filter((item: IJob) =>
     props.myJobs.includes(item.id)
   );

@@ -126,7 +126,11 @@ const Profile = () => {
       });
     }
   }, []);
-
+  
+  /**
+   * Validates the profile form values .
+   * @returns {IErrors} - An object containing error messages for each field if any.
+   */
   const validateForm = () => {
     const newErrors: IErrors = Error;
     const regexUsername = /^[A-Za-z\s]+$/;
@@ -226,7 +230,11 @@ const Profile = () => {
     setErrors(newErrors);
     return newErrors;
   };
-
+  
+  /**
+   * Handles form submission by validating the form and updating the profile 
+   * @param {FormEvent} e - The form submission event.
+   */
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     const errors = validateForm();
@@ -242,11 +250,18 @@ const Profile = () => {
       setIsSubmit(false);
     }
   };
-
+  
+  /**
+   * Toggles the display state of the profile section.
+   */
   const display = () => {
     setDisplayProfile(!displayProfile);
   };
-
+  
+  /**
+   * Handles changes to form fields 
+   * @param {ChangeEvent | SelectChangeEvent} e - The event triggered when a form field value changes.
+   */
   const handleChange = (e: ChangeEvent | SelectChangeEvent) => {
     const { name, value } = e.target as HTMLInputElement;
     console.log(value);

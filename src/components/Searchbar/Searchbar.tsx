@@ -72,18 +72,28 @@ const Searchbar = (props: ISearch) => {
   const [catValue, setCatValue] = useState("");
   const [locValue, setLocValue] = useState("");
   const [isFocused, setIsFocused] = useState(false);
-
+  
+  /**
+   * Handles focus event 
+   */
   const handleFocus = () => {
     setIsFocused(true);
   };
 
-  // Passes search query to parent component
+  /**
+   * Handles the category change event. 
+   * @param {React.FormEvent} event - The form event triggered when the category selection changes.
+   */
   const handleCatChange = (event: React.FormEvent) => {
     const category = (event.target as HTMLInputElement).value;
     setCatValue((event.target as HTMLInputElement).value);
     props.onFilterChange({ location: locValue, category: category });
   };
-
+  
+  /**
+   * Handles the location change event. 
+   * @param {React.FormEvent} event - The form event triggered when the location selection changes.
+   */
   const handleLocChange = (event: React.FormEvent) => {
     const location = (event.target as HTMLInputElement).value;
     setLocValue((event.target as HTMLInputElement).value);
