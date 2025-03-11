@@ -6,7 +6,7 @@ import { IJob, IApplied } from "../../type/type";
 
 const AppliedJobs = (props: IApplied) => {
   const classes = useStyle();
-  
+
   /**
    * Filters the list of jobs to include only those that match the user's "myJobs" list.
    * @param {IJob[]} props.jobs - The list of all job objects.
@@ -30,25 +30,25 @@ const AppliedJobs = (props: IApplied) => {
             <Grid item xs={9}>
               <Grid container direction="column" rowSpacing="3px">
                 <Grid item>
-                  <Typography className={classes.jobProfile}>
+                  <Typography className={classes.jobProfile} component='p'>
                     {item.title}
                   </Typography>
                 </Grid>
                 <Grid item>
                   <Grid container>
                     <Grid item xs={4}>
-                      <Typography component="h2" className={classes.company}>
+                      <Typography component="h4" className={classes.company}>
                         {item.company}{" "}
                       </Typography>
                     </Grid>
                     <Grid item xs={3}>
-                      <Typography className={classes.jobDetails}>
+                      <Typography className={classes.jobDetails} component='span'>
                         <LocationOnIcon sx={{ height: 15, width: 15, color: "#7A7A7A" }} />
                         {item.location}
                       </Typography>
                     </Grid>
                     <Grid item xs={3}>
-                      <Typography className={classes.jobDetails}>
+                      <Typography className={classes.jobDetails} component='span'>
                         {item.employment_type}
                       </Typography>
                     </Grid>
@@ -57,7 +57,7 @@ const AppliedJobs = (props: IApplied) => {
               </Grid>
             </Grid>
             <Grid item xs={2}>
-              <Typography className={classes.fulltime}>full time</Typography>
+              <Typography className={classes.fulltime} component='span'>full time</Typography>
             </Grid>
           </Grid>
         ))}

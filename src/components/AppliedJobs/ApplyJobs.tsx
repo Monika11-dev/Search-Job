@@ -28,25 +28,25 @@ const ApplyJobs = (props: IApply) => {
             <Grid item xs={9}>
               <Grid container direction="column" rowSpacing="3px">
                 <Grid item>
-                  <Typography className={classes.jobProfile}>
+                  <Typography className={classes.jobProfile} component='p'>
                     {item.title}
                   </Typography>
                 </Grid>
                 <Grid item>
                   <Grid container>
                     <Grid item xs={4}>
-                      <Typography variant="h3" component="h3" className={classes.company}>
+                      <Typography  component="h4" className={classes.company}>
                         {item.company}
                       </Typography>
                     </Grid>
                     <Grid item xs={4}>
-                      <Typography className={classes.jobDetails}>
+                      <Typography component='span' className={classes.jobDetails}>
                         <LocationOnIcon sx={{ height: 15, width: 15, color: "#7A7A7A" }} />
                         {item.location}
                       </Typography>
                     </Grid>
                     <Grid item xs={3}>
-                      <Typography className={classes.jobDetails}>
+                      <Typography component='span' className={classes.jobDetails}>
                         {item.employment_type}
                       </Typography>
                     </Grid>

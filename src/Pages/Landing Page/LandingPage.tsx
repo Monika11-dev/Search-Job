@@ -164,9 +164,9 @@ const LandingPage = () => {
                 <Button onClick={() => setSignup(!isSignup)}>
                   {/* display login button by default  */}
                   {isSignup ? (
-                    <Typography className={classes.login}>Log In</Typography>
+                    <Typography component='span' className={classes.login}>Log In</Typography>
                   ) : (
-                    <Typography className={classes.signup}>Sign up</Typography>
+                    <Typography component='span' className={classes.signup}>Sign up</Typography>
                   )}
                 </Button>
               </Box>
@@ -255,7 +255,7 @@ const LandingPage = () => {
                       : "New to SearchJob ?"}
                   </Typography>
                   <Button onClick={() => setSignup(!isSignup)}>
-                    <Typography className={classes.Signup}>
+                    <Typography className={classes.Signup} component='span'>
                       {" "}
                       &nbsp; {isSignup ? "Log in" : "Join now"}
                     </Typography>

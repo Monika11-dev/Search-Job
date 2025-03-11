@@ -1,4 +1,4 @@
-import { Grid, Typography, List, ListItem, FormGroup, FormControlLabel, Checkbox } from "@mui/material";
+import { Typography, List, ListItem, FormGroup, FormControlLabel, Checkbox, Box } from "@mui/material";
 import { useState } from "react";
 import useStyle from "./JobFilter.css";
 import { IFilter } from "../../type/type";
@@ -7,9 +7,9 @@ const JobFilter = (props: IFilter) => {
   const classes = useStyle();
   const [selectedLocation, setSelectedLocation] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
-  
+
   /**
-   * Handles the change event for selecting or deselecting a location. 
+   * Handles the change event for selecting or deselecting a location.
    * @param {React.ChangeEvent} event - The change event triggered when the location checkbox is toggled.
    * @param {string} location - The location that was selected or deselected.
    */
@@ -23,7 +23,7 @@ const JobFilter = (props: IFilter) => {
       category: selectedCategory,
     });
   };
-  
+
   /**
    * Handles the change event for selecting or deselecting a category.
    * @param {React.ChangeEvent} event - The change event triggered when the category checkbox is toggled.
@@ -41,10 +41,9 @@ const JobFilter = (props: IFilter) => {
   };
 
   return (
-    <Grid container direction="column" sx={{ marginBottom: "35px" }}>
-      <Grid
-        item
-        xs={12}
+    <>
+      <Box
+        component="div"
         sx={{ borderBottom: `2px solid #4884ED`, marginBottom: "20px" }}
       >
         <Typography variant="h3" className={classes.filterHeading}>
@@ -69,10 +68,9 @@ const JobFilter = (props: IFilter) => {
             </ListItem>
           ))}
         </List>
-      </Grid>
-      <Grid
-        item
-        xs={12}
+      </Box>
+      <Box
+        component="div"
         sx={{ borderBottom: `2px solid #4884ED`, marginBottom: "20px" }}
       >
         <Typography variant="h3" className={classes.filterHeading}>
@@ -97,8 +95,8 @@ const JobFilter = (props: IFilter) => {
             </ListItem>
           ))}
         </List>
-      </Grid>
-    </Grid>
+      </Box>
+    </>
   );
 };
 

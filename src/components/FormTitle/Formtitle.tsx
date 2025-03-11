@@ -24,7 +24,7 @@ const Formtitle = (props: IFormHeading) => {
   
   return (
     <>
-      <Typography className={classes.formHead}>{props.heading}</Typography>
+      <Typography component='h4' className={classes.formHead}>{props.heading}</Typography>
       <Divider className={classes.divider} />
     </>
   );

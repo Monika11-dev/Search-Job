@@ -733,7 +733,7 @@ const Profile = () => {
                 marginRight: "10px",
               }}
             >
-              <Typography className={classes.save}>Save Profile</Typography>
+              <Typography className={classes.save} component='span'>Save Profile</Typography>
             </Button>
             <Button
               variant="contained"
@@ -741,7 +741,7 @@ const Profile = () => {
               onClick={display}
               sx={{ borderRadius: "22px", padding: "8px 15px" }}
             >
-              <Typography className={classes.save}>Go back</Typography>
+              <Typography className={classes.save} component='span'>Go back</Typography>
             </Button>
           </form>
         </Box>

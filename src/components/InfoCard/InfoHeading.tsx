@@ -4,7 +4,7 @@ import { IFormHeading } from "../../type/type";
 const InfoHeading = (props: IFormHeading) => {
   
   return (
-    <Typography
+    <Typography component='h4'
       sx={{
         marginBottom: "15px",
         color: "#2E4DB2",

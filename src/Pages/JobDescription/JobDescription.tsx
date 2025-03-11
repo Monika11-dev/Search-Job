@@ -75,19 +75,19 @@ const JobDescription = () => {
               <Grid item xs={8} md={7} sx={{ marginLeft: { lg: "15px" } }}>
                 <Grid container direction="column" rowSpacing="1px">
                   <Grid item>
-                    <Typography className={classes.jobProfile}>
+                    <Typography className={classes.jobProfile} component='h3'>
                       {title}
                     </Typography>
                   </Grid>
                   <Grid item>
                     <Grid container>
                       <Grid item xs={4}>
-                        <Typography className={classes.company}>
+                        <Typography className={classes.company} component='span'>
                           {company}
                         </Typography>
                       </Grid>
                       <Grid item xs={4}>
-                        <Typography className={classes.jobDetails}>
+                        <Typography className={classes.jobDetails} component='span'>
                           <LocationOnIcon
                             sx={{ height: 15, width: 15, color: "#7A7A7A" }}
                           />
@@ -95,7 +95,7 @@ const JobDescription = () => {
                         </Typography>
                       </Grid>
                       <Grid item xs={3}>
-                        <Typography className={classes.jobDetails}>
+                        <Typography className={classes.jobDetails} component='span'>
                           {employment}
                         </Typography>
                       </Grid>
@@ -110,7 +110,7 @@ const JobDescription = () => {
                   onClick={handleApply}
                   className={classes.btnBox}
                 >
-                  <Typography className={classes.applyNow}>
+                  <Typography className={classes.applyNow} component='span'>
                     Apply now
                   </Typography>
                 </Button>
@@ -179,7 +179,7 @@ const JobDescription = () => {
           <Box component="div">
             <Grid container direction="column" sx={{ marginBottom: "35px" }}>
               <Grid item xs={12} sx={{ borderBottom: `2px solid #4884ED` }}>
-                <Typography variant="h3" className={classes.filterHeading}>
+                <Typography variant="h4" className={classes.filterHeading}>
                   Jobs Details
                 </Typography>
                 <List className={classes.filterContent}>

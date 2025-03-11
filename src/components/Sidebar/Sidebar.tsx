@@ -69,10 +69,10 @@ export const Sidebar: React.FC = () => {
           <Person2Icon />
         </Avatar>
         <Stack className={classes.userdetails}>
-          <Typography variant="body1" className={classes.userName}>
+          <Typography component='h2' className={classes.userName}>
             {user}
           </Typography>
-          <Typography variant="body2" className={classes.userDesignation}>
+          <Typography component='span' className={classes.userDesignation}>
             Javascript Developer
           </Typography>
         </Stack>
@@ -146,7 +146,7 @@ export const Sidebar: React.FC = () => {
             onClose={handleClose}
             className={classes.logoutAlert}
           >
-            <Typography className={classes.logoutText}>
+            <Typography className={classes.logoutText} component='h3'>
               Do you want to Logout ?
             </Typography>
 

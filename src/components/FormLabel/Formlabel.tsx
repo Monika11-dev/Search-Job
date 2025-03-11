@@ -17,7 +17,7 @@ const useStyle = makeStyles<Theme>((theme) => ({
 const Formlabel = (props: IFormLabel) => {
   const classes = useStyle();
   
-  return <Typography className={classes.Label}>{props.label}</Typography>;
+  return <Typography component='h6' className={classes.Label}>{props.label}</Typography>;
 };
 
 export default Formlabel;
