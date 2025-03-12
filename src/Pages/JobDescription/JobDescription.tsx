@@ -75,19 +75,19 @@ const JobDescription = () => {
               <Grid item xs={8} md={7} sx={{ marginLeft: { lg: "15px" } }}>
                 <Grid container direction="column" rowSpacing="1px">
                   <Grid item>
-                    <Typography className={classes.jobProfile} component='h3'>
+                    <Typography className={classes.jobProfile} variant='h2' component='p'>
                       {title}
                     </Typography>
                   </Grid>
                   <Grid item>
                     <Grid container>
                       <Grid item xs={4}>
-                        <Typography className={classes.company} component='span'>
+                        <Typography className={classes.company} variant='h5' component='span'>
                           {company}
                         </Typography>
                       </Grid>
                       <Grid item xs={4}>
-                        <Typography className={classes.jobDetails} component='span'>
+                        <Typography className={classes.jobDetails} variant='h5' component='span'>
                           <LocationOnIcon
                             sx={{ height: 15, width: 15, color: "#7A7A7A" }}
                           />
@@ -95,7 +95,7 @@ const JobDescription = () => {
                         </Typography>
                       </Grid>
                       <Grid item xs={3}>
-                        <Typography className={classes.jobDetails} component='span'>
+                        <Typography className={classes.jobDetails} variant='h5' component='span'>
                           {employment}
                         </Typography>
                       </Grid>
@@ -110,7 +110,7 @@ const JobDescription = () => {
                   onClick={handleApply}
                   className={classes.btnBox}
                 >
-                  <Typography className={classes.applyNow} component='span'>
+                  <Typography className={classes.applyNow} variant='h4' component='span'>
                     Apply now
                   </Typography>
                 </Button>

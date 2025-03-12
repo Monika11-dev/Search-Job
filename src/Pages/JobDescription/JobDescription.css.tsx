@@ -42,7 +42,7 @@ export const useStyle = makeStyles<Theme>((theme) => ({
     height: 40,
   },
   jobProfile: {
-    ...theme.typography.h2,
+    // ...theme.typography.h2,
     fontSize: "20px !important",
     color: theme.palette.grey[100],
     fontWeight: "600 !important",
@@ -52,7 +52,7 @@ export const useStyle = makeStyles<Theme>((theme) => ({
     },
   },
   company: {
-    ...theme.typography.body1,
+    // ...theme.typography.body1,
     color: theme.palette.primary.main,
     lineHeight: 1.4,
     [theme.breakpoints.down(1200)]: {
@@ -63,7 +63,7 @@ export const useStyle = makeStyles<Theme>((theme) => ({
     },
   },
   jobDetails: {
-    ...theme.typography.body1,
+    // ...theme.typography.body1,
     color: theme.palette.secondary.main,
     lineHeight: 1.4,
     display: "flex",
