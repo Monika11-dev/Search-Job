@@ -54,7 +54,7 @@ const useStyle = makeStyles<Theme>((theme) => ({
     textTransform: "capitalize",
   },
   signup: {
-    ...theme.typography.h4,
+    fontSize: '0.75rem !important',
     color: "white",
     boxShadow: theme.shadows[3],
     backgroundColor: theme.palette.primary.main,

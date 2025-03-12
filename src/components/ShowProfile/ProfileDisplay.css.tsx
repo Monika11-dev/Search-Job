@@ -9,6 +9,7 @@ const useStyle = makeStyles<Theme>((theme) => ({
     padding: "20px 40px",
     border: `1px solid ${theme.palette.background.paper}`,
   },
+  
   divider: {
     color: `${theme.palette.background.paper}`,
     marginBottom: "5px !important",

@@ -37,7 +37,9 @@ const useStyle = makeStyles<Theme>((theme)=>({
       border: `0.5px solid ${theme.palette.grey[300]}`
    },
    tab: {
-      ...theme.typography.h2,
+      fontFamily: "'Nunito','serif' !important",
+      fontSize: "1.125rem !important",
+      lineHeight: '1.3 !important',
       fontWeight: '300 !important',
       '&.Mui-selected': {
          color: `${theme.palette.primary.main} !important`,
@@ -65,6 +67,9 @@ const useStyle = makeStyles<Theme>((theme)=>({
       },
       '& .MuiPagination-ul': {
          justifyContent: 'end',
+         '& button': {
+            fontSize: '0.875rem !important',
+         }
       }
    },
    suggestedJobsbox: {

@@ -52,19 +52,19 @@ const useStyle = makeStyles<Theme>((theme) => ({
       },
     },
   },
-  findBtn: {
-    borderRadius: "25px !important",
-    padding: "6px 16px !important",
-    backgroundColor: "#4884ED !important",
-    "&:hover": {
-      backgroundColor: `${theme.palette.primary.dark} !important`,
-    },
-  },
-  btnTxt: {
-    textTransform: "capitalize",
-    fontFamily: "Mulish !important",
-    fontSize: "12px !important",
-  },
+  // findBtn: {
+  //   borderRadius: "25px !important",
+  //   padding: "6px 16px !important",
+  //   backgroundColor: "#4884ED !important",
+  //   "&:hover": {
+  //     backgroundColor: `${theme.palette.primary.dark} !important`,
+  //   },
+  // },
+  // btnTxt: {
+  //   textTransform: "capitalize",
+  //   fontFamily: "Mulish !important",
+  //   fontSize: "12px !important",
+  // },
 }));
 
 const Searchbar = (props: ISearch) => {

@@ -175,10 +175,8 @@ const JobDescription = () => {
       </Grid>
       {/* displays for desktop size */}
       {isDesktopValue && (
-        <Grid item sm={12} md={3} lg={3} className={classes.colTwo}>
-          <Box component="div">
-            <Grid container direction="column" sx={{ marginBottom: "35px" }}>
-              <Grid item xs={12} sx={{ borderBottom: `2px solid #4884ED` }}>
+        <Grid item md={3} lg={3} className={classes.colTwo}>        
+              <Box component="div" sx={{ borderBottom: `2px solid #4884ED` }}>
                 <Typography variant="h4" className={classes.filterHeading}>
                   Jobs Details
                 </Typography>
@@ -236,9 +234,7 @@ const JobDescription = () => {
                     </Box>
                   </ListItem>
                 </List>
-              </Grid>
-            </Grid>
-          </Box>
+              </Box>
         </Grid>
       )}
     </Grid>

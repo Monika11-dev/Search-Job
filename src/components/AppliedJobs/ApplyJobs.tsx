@@ -35,18 +35,18 @@ const ApplyJobs = (props: IApply) => {
                 <Grid item>
                   <Grid container>
                     <Grid item xs={4}>
-                      <Typography  component="h4" className={classes.company}>
+                      <Typography  variant="h5" className={classes.company}>
                         {item.company}
                       </Typography>
                     </Grid>
                     <Grid item xs={4}>
-                      <Typography component='span' className={classes.jobDetails}>
+                      <Typography variant='h5' className={classes.jobDetails} component='span'>
                         <LocationOnIcon sx={{ height: 15, width: 15, color: "#7A7A7A" }} />
                         {item.location}
                       </Typography>
                     </Grid>
                     <Grid item xs={3}>
-                      <Typography component='span' className={classes.jobDetails}>
+                      <Typography variant='h5' className={classes.jobDetails} component='span'>
                         {item.employment_type}
                       </Typography>
                     </Grid>

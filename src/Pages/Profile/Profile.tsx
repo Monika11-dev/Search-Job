@@ -289,6 +289,14 @@ const Profile = () => {
               rowSpacing={4}
               columnSpacing={{ xs: 1, sm: 2, md: 5 }}
             >
+            </Grid>
+            <Grid
+              container
+              justifyContent="space-between"
+              sx={{ marginBottom: "40px" }}
+              rowSpacing={4}
+              columnSpacing={{ xs: 1, sm: 2, md: 5 }}
+            >
               <Grid item xs={6}>
                 <Formlabel label="First Name" />
                 <TextField
@@ -733,7 +741,7 @@ const Profile = () => {
                 marginRight: "10px",
               }}
             >
-              <Typography className={classes.save} component='span'>Save Profile</Typography>
+              <Typography className={classes.save} variant='h5' component='span'>Save Profile</Typography>
             </Button>
             <Button
               variant="contained"
@@ -741,7 +749,7 @@ const Profile = () => {
               onClick={display}
               sx={{ borderRadius: "22px", padding: "8px 15px" }}
             >
-              <Typography className={classes.save} component='span'>Go back</Typography>
+              <Typography className={classes.save} variant='h5' component='span'>Go back</Typography>
             </Button>
           </form>
         </Box>

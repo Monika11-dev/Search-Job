@@ -69,7 +69,7 @@ export const Sidebar: React.FC = () => {
           <Person2Icon />
         </Avatar>
         <Stack className={classes.userdetails}>
-          <Typography component='h2' className={classes.userName}>
+          <Typography component='h2' variant='h2' className={classes.userName}>
             {user}
           </Typography>
           <Typography component='span' className={classes.userDesignation}>

@@ -37,18 +37,18 @@ const AppliedJobs = (props: IApplied) => {
                 <Grid item>
                   <Grid container>
                     <Grid item xs={4}>
-                      <Typography component="h4" className={classes.company}>
-                        {item.company}{" "}
+                      <Typography variant="h5" className={classes.company}>
+                        {item.company}
                       </Typography>
                     </Grid>
                     <Grid item xs={3}>
-                      <Typography className={classes.jobDetails} component='span'>
+                      <Typography variant="h5" className={classes.jobDetails} component='span'>
                         <LocationOnIcon sx={{ height: 15, width: 15, color: "#7A7A7A" }} />
                         {item.location}
                       </Typography>
                     </Grid>
                     <Grid item xs={3}>
-                      <Typography className={classes.jobDetails} component='span'>
+                      <Typography variant="h5" className={classes.jobDetails} component='span'>
                         {item.employment_type}
                       </Typography>
                     </Grid>
@@ -57,7 +57,7 @@ const AppliedJobs = (props: IApplied) => {
               </Grid>
             </Grid>
             <Grid item xs={2}>
-              <Typography className={classes.fulltime} component='span'>full time</Typography>
+              <Typography variant="body2" className={classes.fulltime} component='span'>full time</Typography>
             </Grid>
           </Grid>
         ))}

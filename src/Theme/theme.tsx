@@ -1,6 +1,6 @@
-import { createTheme } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
 
-// changine theme
+// changing theme
  const theme = createTheme({
   palette: {
     primary: {
@@ -23,29 +23,26 @@ import { createTheme } from "@mui/material";
   },
   typography: {
     h2: {
-      fontFamily: "'Nunito','serif' !important",
-      fontSize: "1rem !important",
-      color: "secondary !important",
+      fontFamily: "'Nunito','serif'",
+      fontSize: "1.125rem",
+      lineHeight: '1.3',
     },
     h3: {
-      fontFamily: "'Mulish','serif' !important",
-      fontSize: "0.875rem !important",
-      color: "secondary !important",
+      fontFamily: "'Mulish','serif' ",
+      fontSize: "0.875rem ",   
     },
     h4: {
-      fontFamily: "'Mulish','serif' !important",
-      fontSize: "0.75rem !important",
-      color: "grey[100]",
+      fontFamily: "'Mulish','serif' ",
+      fontSize: "0.75rem ",
     },
-    body1: {
-      fontFamily: "'Nunito','serif' !important",
-      fontSize: "0.8125rem !important",
-      color: "secondary !important",
+    h5: {
+      fontFamily: "'Nunito','serif' ",
+      fontSize: "0.8125rem ",
+      fontWeight: 300,
     },
     body2: {
-      fontFamily: "'Nunito','serif' !important",
-      fontSize: "0.562rem !important",
-      color: "secondary !important",
+      fontFamily: "'Nunito','serif'",
+      fontSize: "0.562rem",
     },
   },
 });

@@ -41,7 +41,7 @@ export const useStyle = makeStyles<Theme>((theme) => ({
     },
   },
   save: {
-    fontSize: "0.8rem !important",
+    // fontSize: "0.8rem !important",
     textTransform: "capitalize",
   },
 }));

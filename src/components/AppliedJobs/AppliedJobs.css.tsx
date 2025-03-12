@@ -3,16 +3,15 @@ import { makeStyles } from "@mui/styles";
 
 const useStyle = makeStyles<Theme>((theme) => ({
   jobProfile: {
-    ...theme.typography.h2,
+    fontFamily: 'Nunito !important',
     color: theme.palette.secondary.main,
     fontWeight: "500 !important",
     lineHeight: 1.5,
-    [theme.breakpoints.between(850, 1200)]: {
+    [theme.breakpoints.down(1200)]: {
       fontSize: "0.9rem !important",
     },
   },
   company: {
-    ...theme.typography.body1,
     color: theme.palette.primary.main,
     lineHeight: 1.4,
     [theme.breakpoints.down(1200)]: {

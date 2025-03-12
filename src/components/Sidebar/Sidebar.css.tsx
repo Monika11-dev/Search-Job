@@ -18,10 +18,10 @@ const useStyle = makeStyles<Theme>((theme) => ({
     justifyContent: "center",
   },
   userName: {
-    fontFamily: "Nunito !important",
+    // fontFamily: "Nunito !important",
     color: theme.palette.primary.main,
-    fontSize: "18px !important",
-    lineHeight: "1.3 !important",
+    // fontSize: "18px !important",
+    // lineHeight: "1.3 !important",
     [theme.breakpoints.down(1200)]: {
       fontSize: "16px !important",
     },
@@ -86,7 +86,7 @@ const useStyle = makeStyles<Theme>((theme) => ({
   },
   navTxt: {
     "& span": {
-      fontFamily: "nunito",
+      // fontFamily: "nunito",
       [theme.breakpoints.down(1200)]: {
         fontSize: "0.8rem",
       },

@@ -5,8 +5,8 @@ import { IFormLabel } from "../../type/type";
 
 const useStyle = makeStyles<Theme>((theme) => ({
   Label: {
-    fontFamily: "Mulish !important",
-    fontSize: "14px !important",
+    // fontFamily: "Mulish !important",
+    // fontSize: "14px !important",
     fontWeight: "400 !important",
     marginBottom: "10px !important",
     textTransform: "capitalize",
@@ -17,7 +17,7 @@ const useStyle = makeStyles<Theme>((theme) => ({
 const Formlabel = (props: IFormLabel) => {
   const classes = useStyle();
   
-  return <Typography component='h6' className={classes.Label}>{props.label}</Typography>;
+  return <Typography variant='h3' component='h6' className={classes.Label}>{props.label}</Typography>;
 };
 
 export default Formlabel;

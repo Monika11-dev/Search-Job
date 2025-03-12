@@ -1,10 +1,10 @@
-import { Typography, Theme } from "@mui/material";
+import { Typography, Theme} from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { IFormHeading } from "../../type/type";
+// import {theme} from "../../Theme/theme";
 
 const useStyle = makeStyles<Theme>((theme) => ({
   subhead: {
-    ...theme.typography.h3,
     fontWeight: "600 !important",
     color: theme.palette.secondary.main,
     marginTop: "5px !important",

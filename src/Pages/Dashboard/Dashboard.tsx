@@ -14,6 +14,7 @@ import Searchbar from "../../components/Searchbar/Searchbar";
 import { useNavigate } from "react-router-dom";
 import { IJob, IUserId } from "../../type/type";
 
+
 const Dashboard = () => {
   const classes = useStyle();
   const navigate = useNavigate();

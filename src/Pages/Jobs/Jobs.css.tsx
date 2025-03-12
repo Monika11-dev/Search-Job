@@ -48,6 +48,9 @@ export const useStyle = makeStyles<Theme>((theme) => ({
     },
     "& .MuiPagination-ul": {
       justifyContent: "center",
+      '& button': {
+        fontSize: '0.875rem !important',
+      }
     },
   },
 }));

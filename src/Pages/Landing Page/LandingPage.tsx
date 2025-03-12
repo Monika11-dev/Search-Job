@@ -237,7 +237,7 @@ const LandingPage = () => {
                   disableElevation
                   onClick={handleSubmit}
                 >
-                  <Typography className={classes.signinText}>
+                  <Typography variant='h3' component='span' className={classes.signinText}>
                     {isSignup ? "Sign Up" : "Sign In"}
                   </Typography>
                 </Button>
@@ -249,7 +249,7 @@ const LandingPage = () => {
                     marginTop: "10px",
                   }}
                 >
-                  <Typography component="span" className={classes.Signup}>
+                  <Typography component="span"  className={classes.Signup}>
                     {isSignup
                       ? "Already have an account ?"
                       : "New to SearchJob ?"}
